@@ -1,6 +1,7 @@
 package com.example.instore.home
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -26,9 +27,10 @@ class HomeFragment : Fragment() {
             R.drawable.offerta2,
             R.drawable.offerta3
         )
-        val offerteViewPager = MyViewPager(this.requireContext())
-        val adapter = OffertePagerAdapter(this.requireContext(),imageOfferte)
-        offerteViewPager.adapter = adapter
+        //val offerteViewPager = MyViewPager(this.requireContext())
+        val adapter = OffertePagerAdapter(this.requireContext(), imageOfferte)
+        binding.viewPager.adapter = adapter
+
 
         return binding.root
     }

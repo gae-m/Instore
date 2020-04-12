@@ -17,6 +17,7 @@ class OffertePagerAdapter(val context: Context,val imageResourceList: List<Int>)
         val imageView = ImageView(context)
         imageView.setImageResource(imageResourceList[position])
         imageView.scaleType= ImageView.ScaleType.FIT_XY
+        container.addView(imageView)
         return imageView
     }
 
@@ -25,6 +26,6 @@ class OffertePagerAdapter(val context: Context,val imageResourceList: List<Int>)
     }
 
     override fun destroyItem(container: ViewGroup, position: Int, `object`: Any) {
-        super.destroyItem(container, position, `object`)
+        container.removeView(`object` as ImageView)
     }
 }
