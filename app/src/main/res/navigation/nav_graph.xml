@@ -16,12 +16,16 @@
     </fragment>
     <fragment
         android:id="@+id/clothesFragment"
-        android:name="com.example.instore.ClothesFragment"
+        android:name="com.example.instore.clothes.ClothesFragment"
         android:label="fragment_clothes"
         tools:layout="@layout/fragment_clothes" >
         <action
             android:id="@+id/action_clothesFragment_to_dressFragment"
             app:destination="@id/dressFragment" />
+        <argument
+            android:name="categoria"
+            app:argType="string"
+            android:defaultValue='""' />
     </fragment>
     <fragment
         android:id="@+id/dressFragment"

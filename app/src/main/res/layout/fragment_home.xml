@@ -7,15 +7,111 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
+        <ImageView
+            android:id="@+id/bambino_imageView"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_margin="8dp"
+            android:alpha="0.8"
+            android:contentDescription="@string/bambino_contenentDescriptor"
+            android:scaleType="fitXY"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/uomo_imageView"
+            app:layout_constraintTop_toBottomOf="@+id/donna_imageView"
+            app:srcCompat="@drawable/bambino" />
+
+        <ImageView
+            android:id="@+id/uomo_imageView"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_margin="8dp"
+            android:alpha="0.8"
+            android:contentDescription="@string/uomo_contenentDescriptor"
+            android:scaleType="fitXY"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/bambino_imageView"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/nuoviArrivi_imageView"
+            app:srcCompat="@drawable/uomo" />
+
+        <ImageView
+            android:id="@+id/donna_imageView"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_margin="8dp"
+            android:alpha="0.8"
+            android:contentDescription="@string/donna_contenentDescriptor"
+            android:scaleType="fitXY"
+            app:layout_constraintBottom_toTopOf="@+id/bambino_imageView"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/nuoviArrivi_imageView"
+            app:layout_constraintTop_toBottomOf="@+id/viewPager"
+            app:srcCompat="@drawable/donna" />
+
         <androidx.viewpager.widget.ViewPager
             android:id="@+id/viewPager"
             android:layout_width="0dp"
             android:layout_height="0dp"
+            android:orientation="horizontal"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintHeight_percent="0.35"
-            android:orientation="horizontal"/>
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/nuoviArrivi_imageView"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_margin="8dp"
+            android:alpha="0.8"
+            android:contentDescription="@string/nuoviArrivi_contenentDescriptor"
+            android:scaleType="fitXY"
+            app:layout_constraintBottom_toTopOf="@+id/uomo_imageView"
+            app:layout_constraintEnd_toStartOf="@+id/donna_imageView"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/viewPager"
+            app:srcCompat="@drawable/nuovi_arrivi" />
+
+        <TextView
+            android:id="@+id/nuoviArrivi_textView"
+            style="@style/home_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/nuovi_arrivi"
+            app:layout_constraintBottom_toBottomOf="@+id/nuoviArrivi_imageView"
+            app:layout_constraintStart_toStartOf="@+id/nuoviArrivi_imageView" />
+
+        <TextView
+            android:id="@+id/donna_textView"
+            style="@style/home_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/donna"
+            app:layout_constraintBottom_toBottomOf="@+id/donna_imageView"
+            app:layout_constraintStart_toStartOf="@+id/donna_imageView" />
+
+        <TextView
+            android:id="@+id/uomo_textView"
+            style="@style/home_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/uomo"
+            app:layout_constraintBottom_toBottomOf="@+id/uomo_imageView"
+            app:layout_constraintStart_toStartOf="@+id/uomo_imageView" />
+
+        <TextView
+            android:id="@+id/bambino_textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/bambino"
+            app:layout_constraintBottom_toBottomOf="@+id/bambino_imageView"
+            app:layout_constraintStart_toStartOf="@+id/bambino_imageView"
+            style="@style/home_label" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
