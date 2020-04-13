@@ -26,8 +26,7 @@ class HomeFragment : Fragment() {
         val imageOfferte = listOf<Int>(
             R.drawable.offerta4,
             R.drawable.offerta1,
-            R.drawable.offerta2,
-            R.drawable.offerta3
+            R.drawable.offerta2
         )
         val adapter = OffertePagerAdapter(this.requireContext(), imageOfferte)
         binding.viewPager.adapter = adapter

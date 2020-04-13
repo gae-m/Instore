@@ -5,17 +5,20 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:background="#1E1E1E">
 
         <ImageView
             android:id="@+id/bambino_imageView"
             android:layout_width="0dp"
             android:layout_height="0dp"
-            android:layout_margin="8dp"
-            android:alpha="0.8"
+            android:layout_marginEnd="5dp"
+            android:layout_marginBottom="5dp"
+            android:alpha="0.9"
             android:contentDescription="@string/bambino_contenentDescriptor"
             android:scaleType="fitXY"
             app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintDimensionRatio="1:1"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toEndOf="@+id/uomo_imageView"
@@ -26,13 +29,16 @@
             android:id="@+id/uomo_imageView"
             android:layout_width="0dp"
             android:layout_height="0dp"
-            android:layout_margin="8dp"
-            android:alpha="0.8"
+            android:layout_marginStart="5dp"
+            android:layout_marginEnd="5dp"
+            android:layout_marginBottom="5dp"
+            android:alpha="0.9"
             android:contentDescription="@string/uomo_contenentDescriptor"
             android:scaleType="fitXY"
             app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintDimensionRatio="1:1"
             app:layout_constraintEnd_toStartOf="@+id/bambino_imageView"
-            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintHorizontal_bias="0.6"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/nuoviArrivi_imageView"
             app:srcCompat="@drawable/uomo" />
@@ -41,11 +47,14 @@
             android:id="@+id/donna_imageView"
             android:layout_width="0dp"
             android:layout_height="0dp"
-            android:layout_margin="8dp"
-            android:alpha="0.8"
+            android:layout_marginTop="5dp"
+            android:layout_marginEnd="5dp"
+            android:layout_marginBottom="5dp"
+            android:alpha="0.9"
             android:contentDescription="@string/donna_contenentDescriptor"
             android:scaleType="fitXY"
             app:layout_constraintBottom_toTopOf="@+id/bambino_imageView"
+            app:layout_constraintDimensionRatio="1:1"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toEndOf="@+id/nuoviArrivi_imageView"
@@ -57,8 +66,8 @@
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:orientation="horizontal"
+            app:layout_constraintDimensionRatio="16:9"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHeight_percent="0.35"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -66,11 +75,15 @@
             android:id="@+id/nuoviArrivi_imageView"
             android:layout_width="0dp"
             android:layout_height="0dp"
-            android:layout_margin="8dp"
-            android:alpha="0.8"
+            android:layout_marginStart="5dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginEnd="5dp"
+            android:layout_marginBottom="5dp"
+            android:alpha="0.9"
             android:contentDescription="@string/nuoviArrivi_contenentDescriptor"
             android:scaleType="fitXY"
             app:layout_constraintBottom_toTopOf="@+id/uomo_imageView"
+            app:layout_constraintDimensionRatio="1:1"
             app:layout_constraintEnd_toStartOf="@+id/donna_imageView"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
@@ -106,12 +119,12 @@
 
         <TextView
             android:id="@+id/bambino_textView"
+            style="@style/home_label"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/bambino"
             app:layout_constraintBottom_toBottomOf="@+id/bambino_imageView"
-            app:layout_constraintStart_toStartOf="@+id/bambino_imageView"
-            style="@style/home_label" />
+            app:layout_constraintStart_toStartOf="@+id/bambino_imageView" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
