@@ -62,6 +62,7 @@ class HomeFragment : Fragment() {
         return super.onOptionsItemSelected(item) || NavigationUI.onNavDestinationSelected(item,navController)
     }
 
+
     fun goToClothes(categoria: String){
         navController.navigate(HomeFragmentDirections.actionHomeFragmentToClothesFragment(categoria))
     }
