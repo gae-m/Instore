@@ -8,5 +8,6 @@
     <string name="donna">Donna</string>
     <string name="uomo">Uomo</string>
     <string name="bambino">Bambino</string>
+    <string name="cart">Cart</string>
 
 </resources>
