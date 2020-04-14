@@ -5,13 +5,16 @@ import android.util.Log
 import android.view.*
 import androidx.fragment.app.Fragment
 import androidx.databinding.DataBindingUtil
+import androidx.navigation.NavController
 import androidx.navigation.fragment.findNavController
+import androidx.navigation.ui.NavigationUI
 import com.example.instore.R
 import com.example.instore.databinding.FragmentHomeBinding
 
 
 class HomeFragment : Fragment() {
     private lateinit var binding: FragmentHomeBinding
+    private lateinit var navController: NavController
 
 
     override fun onCreateView(
@@ -28,6 +31,7 @@ class HomeFragment : Fragment() {
         )
         val adapter = OffertePagerAdapter(this.requireContext(), imageOfferte)
         binding.viewPager.adapter = adapter
+        navController = findNavController()
 
         binding.apply {
             uomoImageView.setOnClickListener {
@@ -54,8 +58,12 @@ class HomeFragment : Fragment() {
         inflater.inflate(R.menu.cart_menu,menu)
     }
 
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        return super.onOptionsItemSelected(item) || NavigationUI.onNavDestinationSelected(item,navController)
+    }
+
     fun goToClothes(categoria: String){
-        findNavController().navigate(HomeFragmentDirections.actionHomeFragmentToClothesFragment(categoria))
+        navController.navigate(HomeFragmentDirections.actionHomeFragmentToClothesFragment(categoria))
     }
 
 

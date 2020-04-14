@@ -31,11 +31,7 @@
         android:id="@+id/dressFragment"
         android:name="com.example.instore.DressFragment"
         android:label="fragment_dress"
-        tools:layout="@layout/fragment_dress" >
-        <action
-            android:id="@+id/action_dressFragment_to_cartFragment"
-            app:destination="@id/cartFragment" />
-    </fragment>
+        tools:layout="@layout/fragment_dress" />
     <fragment
         android:id="@+id/cartFragment"
         android:name="com.example.instore.CartFragment"
