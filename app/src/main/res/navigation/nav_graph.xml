@@ -3,14 +3,13 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/homeFragment"
-    tools:ignore="UnusedNavigation">
+    app:startDestination="@id/homeFragment">
 
     <fragment
         android:id="@+id/homeFragment"
         android:name="com.example.instore.home.HomeFragment"
-        android:label="fragment_home"
-        tools:layout="@layout/fragment_home" >
+        android:label="@string/home_label"
+        tools:layout="@layout/fragment_home">
         <action
             android:id="@+id/action_homeFragment_to_clothesFragment"
             app:destination="@id/clothesFragment" />
@@ -18,26 +17,26 @@
     <fragment
         android:id="@+id/clothesFragment"
         android:name="com.example.instore.clothes.ClothesFragment"
-        android:label="fragment_clothes"
-        tools:layout="@layout/fragment_clothes" >
+        android:label=""
+        tools:layout="@layout/fragment_clothes">
         <action
             android:id="@+id/action_clothesFragment_to_dressFragment"
             app:destination="@id/dressFragment" />
+        <argument
+            android:name="categoria"
+            android:defaultValue='""'
+            app:argType="string" />
     </fragment>
     <fragment
         android:id="@+id/dressFragment"
         android:name="com.example.instore.DressFragment"
-        android:label="fragment_dress"
-        tools:layout="@layout/fragment_dress" >
-        <action
-            android:id="@+id/action_dressFragment_to_cartFragment"
-            app:destination="@id/cartFragment" />
-    </fragment>
+        android:label="@string/dress_label"
+        tools:layout="@layout/fragment_dress" />
     <fragment
         android:id="@+id/cartFragment"
         android:name="com.example.instore.CartFragment"
-        android:label="fragment_cart"
-        tools:layout="@layout/fragment_cart" >
+        android:label="@string/cart_label"
+        tools:layout="@layout/fragment_cart">
         <action
             android:id="@+id/action_cartFragment_to_qrCodeFragment"
             app:destination="@id/qrCodeFragment" />

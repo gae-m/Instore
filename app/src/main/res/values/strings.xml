@@ -1,6 +1,14 @@
 <resources>
     <string name="app_name">Instore</string>
+    <string name="nuovi_arrivi">Nuovi\nArrivi</string>
+    <string name="donna">Donna</string>
+    <string name="uomo">Uomo</string>
+    <string name="bambino">Bambino</string>
+    <string name="cart">Cart</string>
+    <string name="nuovi_arrivi_menu">Nuovi Arrivi</string>
+    <string name="home_label">Home</string>
+    <string name="clothes_label">Catalogo</string>
+    <string name="dress_label" />
+    <string name="cart_label">Carrello</string>
 
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

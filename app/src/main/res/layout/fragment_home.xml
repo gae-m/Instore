@@ -1,16 +1,127 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical"
-    tools:context=".home.HomeFragment">
+    xmlns:tools="http://schemas.android.com/tools">
 
-    <Button
-        android:id="@+id/btnVai"
-        android:layout_width="104dp"
-        android:layout_height="wrap_content"
-        android:text="Button" />
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/colorBackground">
 
-</LinearLayout>
+        <ImageView
+            android:id="@+id/bambino_imageView"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginEnd="5dp"
+            android:layout_marginBottom="5dp"
+            android:alpha="0.9"
+            android:contentDescription="@string/bambino"
+            android:scaleType="centerCrop"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/uomo_imageView"
+            app:layout_constraintTop_toBottomOf="@+id/donna_imageView"
+            app:srcCompat="@drawable/bambino" />
+
+        <ImageView
+            android:id="@+id/uomo_imageView"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginStart="5dp"
+            android:layout_marginEnd="5dp"
+            android:layout_marginBottom="5dp"
+            android:alpha="0.9"
+            android:contentDescription="@string/uomo"
+            android:scaleType="centerCrop"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/bambino_imageView"
+            app:layout_constraintHorizontal_bias="0.6"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/nuoviArrivi_imageView"
+            app:srcCompat="@drawable/uomo" />
+
+        <ImageView
+            android:id="@+id/donna_imageView"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginEnd="5dp"
+            android:layout_marginBottom="5dp"
+            android:alpha="0.9"
+            android:contentDescription="@string/donna"
+            android:scaleType="centerCrop"
+            app:layout_constraintBottom_toTopOf="@+id/bambino_imageView"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/nuoviArrivi_imageView"
+            app:layout_constraintTop_toBottomOf="@+id/viewPager"
+            app:srcCompat="@drawable/donna" />
+
+        <androidx.viewpager.widget.ViewPager
+            android:id="@+id/viewPager"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:orientation="horizontal"
+            app:layout_constraintDimensionRatio="16:9"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/nuoviArrivi_imageView"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginStart="5dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginEnd="5dp"
+            android:layout_marginBottom="5dp"
+            android:alpha="0.9"
+            android:contentDescription="@string/nuovi_arrivi_menu"
+            android:scaleType="centerCrop"
+            app:layout_constraintBottom_toTopOf="@+id/uomo_imageView"
+            app:layout_constraintEnd_toStartOf="@+id/donna_imageView"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/viewPager"
+            app:srcCompat="@drawable/nuovi_arrivi" />
+
+        <TextView
+            android:id="@+id/nuoviArrivi_textView"
+            style="@style/home_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/nuovi_arrivi"
+            app:layout_constraintBottom_toBottomOf="@+id/nuoviArrivi_imageView"
+            app:layout_constraintStart_toStartOf="@+id/nuoviArrivi_imageView" />
+
+        <TextView
+            android:id="@+id/donna_textView"
+            style="@style/home_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/donna"
+            app:layout_constraintBottom_toBottomOf="@+id/donna_imageView"
+            app:layout_constraintStart_toStartOf="@+id/donna_imageView" />
+
+        <TextView
+            android:id="@+id/uomo_textView"
+            style="@style/home_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/uomo"
+            app:layout_constraintBottom_toBottomOf="@+id/uomo_imageView"
+            app:layout_constraintStart_toStartOf="@+id/uomo_imageView" />
+
+        <TextView
+            android:id="@+id/bambino_textView"
+            style="@style/home_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/bambino"
+            app:layout_constraintBottom_toBottomOf="@+id/bambino_imageView"
+            app:layout_constraintStart_toStartOf="@+id/bambino_imageView" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
