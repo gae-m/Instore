@@ -1,28 +1,15 @@
 package com.example.instore
 
 import android.os.Bundle
-import android.provider.ContactsContract
-import android.util.Log
-import android.widget.ImageView
 import androidx.appcompat.app.AppCompatActivity
-import com.google.firebase.firestore.ktx.firestore
-import com.google.firebase.ktx.Firebase
-import com.google.gson.Gson
-import com.google.gson.reflect.TypeToken
-import kotlinx.android.synthetic.main.activity_main.*
 import models.Database
-import models.Product
-import org.json.JSONObject
-import android.util.Log
 import androidx.databinding.DataBindingUtil
 import androidx.drawerlayout.widget.DrawerLayout
+import androidx.fragment.app.FragmentActivity
 import androidx.navigation.*
 import androidx.navigation.ui.*
 import com.example.instore.databinding.ActivityMainBinding
-import com.example.instore.home.HomeFragmentDirections
-import com.google.android.material.internal.NavigationMenu
-import com.google.android.material.internal.NavigationMenuView
-import com.google.android.material.navigation.NavigationView
+
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding

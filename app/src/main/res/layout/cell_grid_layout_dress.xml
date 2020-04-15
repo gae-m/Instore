@@ -18,11 +18,11 @@
             android:id="@+id/imageTest"
             android:layout_width="160dp"
             android:layout_height="160dp"
-            android:scaleType="centerCrop"
             android:layout_centerHorizontal="true"
-            android:src="@drawable/berretto_nero"
+            android:scaleType="centerCrop"
             android:textSize="20sp"
-            android:textStyle="bold" />
+            android:textStyle="bold"
+            app:srcCompat="@drawable/common_google_signin_btn_icon_dark" />
 
         <TextView
             android:id="@+id/textNome"

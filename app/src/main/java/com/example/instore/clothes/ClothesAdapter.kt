@@ -30,6 +30,7 @@ class ClothesAdapter(var productList: MutableList<Product>, var context: Context
     override fun onBindViewHolder(holder: ItemHolder, position: Int) {
         var prodotto: Product = productList[position]
         var idProdotto: String = prodotto.id
+
         Glide.with(context).load(prodotto.imgUrl).into(holder.tvImage)
         holder.tvNome.text = prodotto.nome
         holder.tvPrezzo.text = prodotto.prezzo.toString() + " " + euro

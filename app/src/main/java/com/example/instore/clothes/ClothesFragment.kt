@@ -10,13 +10,8 @@ import androidx.databinding.DataBindingUtil
 import androidx.navigation.fragment.findNavController
 import com.example.instore.R
 import com.example.instore.databinding.FragmentClothesBinding
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
-import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.instore.R
 import kotlinx.android.synthetic.main.fragment_clothes.*
 import models.Database
 
@@ -37,7 +32,7 @@ class ClothesFragment : Fragment() {
 
         binding = DataBindingUtil.inflate(inflater,R.layout.fragment_clothes,container,false)
         arguments?.let{
-            binding.textView.text = ClothesFragmentArgs.fromBundle(it).categoria
+
             findNavController().graph.label = ClothesFragmentArgs.fromBundle(it).categoria
             (activity as AppCompatActivity).supportActionBar?.title = findNavController().graph.label
         }
