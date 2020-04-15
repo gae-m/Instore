@@ -8,4 +8,5 @@
         android:icon="@drawable/shoppingcart_icon"
         android:title="@string/cart"
         app:showAsAction="ifRoom" />
+
 </menu>

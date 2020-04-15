@@ -1,13 +1,14 @@
 <resources>
     <string name="app_name">Instore</string>
-    <string name="uomo_contenentDescriptor">Collezione Uomo</string>
-    <string name="donna_contenentDescriptor">Collezione Donna</string>
-    <string name="bambino_contenentDescriptor">Collezione Bambino</string>
-    <string name="nuoviArrivi_contenentDescriptor">Nuovi Arrivi</string>
     <string name="nuovi_arrivi">Nuovi\nArrivi</string>
     <string name="donna">Donna</string>
     <string name="uomo">Uomo</string>
     <string name="bambino">Bambino</string>
     <string name="cart">Cart</string>
+    <string name="nuovi_arrivi_menu">Nuovi Arrivi</string>
+    <string name="home_label">Home</string>
+    <string name="clothes_label">Catalogo</string>
+    <string name="dress_label" />
+    <string name="cart_label">Carrello</string>
 
 </resources>
