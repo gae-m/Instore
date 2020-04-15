@@ -38,11 +38,8 @@ class MainActivity : AppCompatActivity() {
         drawerLayout.closeDrawer(binding.navView)
         val bundle = Bundle()
         bundle.putString("categoria",categoria)
-        if (navController.currentDestination?.id!=R.id.clothesFragment||(navController.currentDestination?.label as String) !=categoria){
-            navController.navigate(R.id.clothesFragment,bundle)
-            return true
-        }
-        return false
+        navController.navigate(R.id.clothesFragment,bundle)
+        return true
     }
 
 

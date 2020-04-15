@@ -7,7 +7,6 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
-import androidx.navigation.fragment.findNavController
 import com.example.instore.R
 import com.example.instore.databinding.FragmentClothesBinding
 import androidx.recyclerview.widget.GridLayoutManager
@@ -32,9 +31,7 @@ class ClothesFragment : Fragment() {
 
         binding = DataBindingUtil.inflate(inflater,R.layout.fragment_clothes,container,false)
         arguments?.let{
-
-            findNavController().graph.label = ClothesFragmentArgs.fromBundle(it).categoria
-            (activity as AppCompatActivity).supportActionBar?.title = findNavController().graph.label
+            (activity as AppCompatActivity).supportActionBar?.title = ClothesFragmentArgs.fromBundle(it).categoria
         }
 
         return binding.root

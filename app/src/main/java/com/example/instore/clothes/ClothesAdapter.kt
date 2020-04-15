@@ -38,6 +38,7 @@ class ClothesAdapter(var productList: MutableList<Product>, var context: Context
         holder.tvImage.setOnClickListener {
             Toast.makeText(context, prodotto.nome, Toast.LENGTH_LONG).show()
 
+
         }
     }
 
