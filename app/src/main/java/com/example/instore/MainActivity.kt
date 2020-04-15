@@ -5,7 +5,6 @@ import androidx.appcompat.app.AppCompatActivity
 import models.Database
 import androidx.databinding.DataBindingUtil
 import androidx.drawerlayout.widget.DrawerLayout
-import androidx.fragment.app.FragmentActivity
 import androidx.navigation.*
 import androidx.navigation.ui.*
 import com.example.instore.databinding.ActivityMainBinding

@@ -5,10 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.bumptech.glide.Glide
 import com.example.instore.R
-import com.google.firebase.ktx.Firebase
-import com.google.firebase.storage.ktx.storage
 import android.view.*
 import androidx.databinding.DataBindingUtil
 import androidx.navigation.NavController
@@ -30,9 +27,9 @@ class HomeFragment : Fragment() {
         binding = DataBindingUtil.inflate(inflater,
             R.layout.fragment_home,container,false)
         val imageOfferte = listOf<Int>(
-            R.drawable.common_full_open_on_phone,
-            R.drawable.common_full_open_on_phone,
-            R.drawable.common_google_signin_btn_icon_dark
+            R.drawable.offerta4,
+            R.drawable.offerta1,
+            R.drawable.offerta2
         )
         val adapter = OffertePagerAdapter(this.requireContext(), imageOfferte)
         binding.viewPager.adapter = adapter

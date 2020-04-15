@@ -22,7 +22,7 @@
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toEndOf="@+id/uomo_imageView"
             app:layout_constraintTop_toBottomOf="@+id/donna_imageView"
-            app:srcCompat="@drawable/common_google_signin_btn_icon_light" />
+            app:srcCompat="@drawable/bambino" />
 
         <ImageView
             android:id="@+id/uomo_imageView"
@@ -39,7 +39,7 @@
             app:layout_constraintHorizontal_bias="0.6"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/nuoviArrivi_imageView"
-            app:srcCompat="@drawable/common_google_signin_btn_icon_light_focused" />
+            app:srcCompat="@drawable/uomo" />
 
         <ImageView
             android:id="@+id/donna_imageView"
@@ -56,7 +56,7 @@
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toEndOf="@+id/nuoviArrivi_imageView"
             app:layout_constraintTop_toBottomOf="@+id/viewPager"
-            app:srcCompat="@drawable/common_google_signin_btn_icon_light" />
+            app:srcCompat="@drawable/donna" />
 
         <androidx.viewpager.widget.ViewPager
             android:id="@+id/viewPager"
@@ -84,7 +84,7 @@
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/viewPager"
-            app:srcCompat="@drawable/common_google_signin_btn_icon_light_normal" />
+            app:srcCompat="@drawable/nuovi_arrivi" />
 
         <TextView
             android:id="@+id/nuoviArrivi_textView"
