@@ -1,5 +1,6 @@
 package com.example.instore
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
@@ -11,6 +12,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.google.android.gms.common.ErrorDialogFragment
 import models.Product
+import kotlin.text.Typography.euro
 
 class ClothesAdapter(var productList: MutableList<Product>, var context: Context): RecyclerView.Adapter<ClothesAdapter.ItemHolder>(){
 
@@ -23,11 +25,12 @@ class ClothesAdapter(var productList: MutableList<Product>, var context: Context
         return productList.size
     }
 
+    @SuppressLint("SetTextI18n")
     override fun onBindViewHolder(holder: ItemHolder, position: Int) {
-
         var prodotto:Product = productList.get(position)
         Glide.with(context).load(prodotto.imgUrl).into(holder.tvImage)
-        holder.tvColore.text = prodotto.colore
+        holder.tvNome.text = prodotto.nome
+        holder.tvPrezzo.text = prodotto.prezzo.toString() + " " + euro
 
         holder.tvImage.setOnClickListener {
             Toast.makeText(context, prodotto.nome, Toast.LENGTH_LONG).show()
@@ -37,7 +40,8 @@ class ClothesAdapter(var productList: MutableList<Product>, var context: Context
     class ItemHolder(itemView: View) : RecyclerView.ViewHolder(itemView){
 
         var tvImage = itemView.findViewById<ImageView>(R.id.imageTest)
-        var tvColore = itemView.findViewById<TextView>(R.id.textColore)
+        var tvNome = itemView.findViewById<TextView>(R.id.textNome)
+        var tvPrezzo = itemView.findViewById<TextView>(R.id.textPrezzo)
 
     }
 
