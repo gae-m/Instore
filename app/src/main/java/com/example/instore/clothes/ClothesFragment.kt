@@ -1,4 +1,4 @@
-package com.example.instore
+package com.example.instore.clothes
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -7,9 +7,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
-import kotlinx.android.synthetic.*
-import kotlinx.android.synthetic.main.cell_grid_layout_dress.*
+import com.example.instore.R
 import kotlinx.android.synthetic.main.fragment_clothes.*
 import models.Database
 
@@ -34,7 +32,10 @@ class ClothesFragment : Fragment() {
         gridLayoutManager = GridLayoutManager(requireContext(),2,LinearLayoutManager.VERTICAL,false)
         listaProdotti.layoutManager = gridLayoutManager
         listaProdotti.setHasFixedSize(true)
-        adapter = ClothesAdapter(Database.productsArray, requireContext())
+        adapter = ClothesAdapter(
+            Database.productsArray,
+            requireContext()
+        )
         listaProdotti.adapter = adapter
 
     }

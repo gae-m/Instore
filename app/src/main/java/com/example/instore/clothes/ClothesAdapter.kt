@@ -1,4 +1,4 @@
-package com.example.instore
+package com.example.instore.clothes
 
 import android.annotation.SuppressLint
 import android.content.Context
@@ -10,6 +10,7 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.example.instore.R
 import com.google.android.gms.common.ErrorDialogFragment
 import models.Product
 import kotlin.text.Typography.euro
