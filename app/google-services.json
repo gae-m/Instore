@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "970480071309",
+    "firebase_url": "https://instore-5475b.firebaseio.com",
+    "project_id": "instore-5475b",
+    "storage_bucket": "instore-5475b.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:970480071309:android:8fdfdca3ec9b79700628c4",
+        "android_client_info": {
+          "package_name": "com.example.instore"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "970480071309-kgdle8h2adbuge4h9bplrb4jqhmg2q9q.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAzhNkllz-FUmRwezanZ6wQgkDrgtilutM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "970480071309-kgdle8h2adbuge4h9bplrb4jqhmg2q9q.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
