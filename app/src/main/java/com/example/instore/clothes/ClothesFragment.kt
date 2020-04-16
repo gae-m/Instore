@@ -1,12 +1,12 @@
 package com.example.instore.clothes
 
 import android.os.Bundle
+import android.view.*
 import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
+import androidx.navigation.fragment.findNavController
+import androidx.navigation.ui.NavigationUI
 import com.example.instore.R
 import com.example.instore.databinding.FragmentClothesBinding
 import androidx.recyclerview.widget.GridLayoutManager
@@ -33,7 +33,7 @@ class ClothesFragment : Fragment() {
         arguments?.let{
             (activity as AppCompatActivity).supportActionBar?.title = ClothesFragmentArgs.fromBundle(it).categoria
         }
-
+        setHasOptionsMenu(true)
         return binding.root
     }
 
@@ -49,5 +49,16 @@ class ClothesFragment : Fragment() {
         )
         listaProdotti.adapter = adapter
 
+    }
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        super.onCreateOptionsMenu(menu, inflater)
+        inflater.inflate(R.menu.cart_menu,menu)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when(item.itemId){
+            R.id.cartItem -> findNavController().navigate(R.id.cartFragment)
+        }
+        return super.onOptionsItemSelected(item)
     }
 }

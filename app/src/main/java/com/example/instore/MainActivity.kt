@@ -41,20 +41,9 @@ class MainActivity : AppCompatActivity() {
         return true
     }
 
-    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
-        menuInflater.inflate(R.menu.cart_menu,menu)
-        return super.onCreateOptionsMenu(menu)
-    }
-
-    override fun onOptionsItemSelected(item: MenuItem?): Boolean {
-        item?.let{
-            navController.navigate(R.id.cartFragment)
-        }
-        return super.onOptionsItemSelected(item)
-    }
 
     override fun onSupportNavigateUp(): Boolean {
-        onBackPressed()
+        drawerLayout.closeDrawer(binding.navView)
         return super.onSupportNavigateUp() || navController.navigateUp(drawerLayout)
     }
 

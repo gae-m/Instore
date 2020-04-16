@@ -10,7 +10,6 @@ import android.view.*
 import androidx.databinding.DataBindingUtil
 import androidx.navigation.NavController
 import androidx.navigation.fragment.findNavController
-import androidx.navigation.ui.NavigationUI
 import com.example.instore.databinding.FragmentHomeBinding
 
 
@@ -49,14 +48,23 @@ class HomeFragment : Fragment() {
                 goToClothes(it.contentDescription as String)
             }
         }
+        setHasOptionsMenu(true)
 
 
         return binding.root
     }
 
-//    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-//        return super.onOptionsItemSelected(item) || NavigationUI.onNavDestinationSelected(item,navController)
-//    }
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        super.onCreateOptionsMenu(menu, inflater)
+        inflater.inflate(R.menu.cart_menu,menu)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when(item.itemId){
+            R.id.cartItem -> navController.navigate(R.id.cartFragment)
+        }
+        return super.onOptionsItemSelected(item)
+    }
 
 
     fun goToClothes(categoria: String){

@@ -10,5 +10,6 @@
     <string name="clothes_label">Catalogo</string>
     <string name="dress_label" />
     <string name="cart_label">Carrello</string>
+    <string name="search">Search</string>
 
 </resources>
