@@ -1,6 +1,8 @@
 package com.example.instore
 
 import android.os.Bundle
+import android.view.Menu
+import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
 import models.Database
 import androidx.databinding.DataBindingUtil
@@ -18,10 +20,7 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        Database.getElencoProdotti {
-            /*list.forEach { element->
-                println(element.id)*/
-                }
+        Database.getElencoProdotti()
         binding = DataBindingUtil.setContentView<ActivityMainBinding>(this,R.layout.activity_main)
         drawerLayout = binding.drawerLayout
         navController = findNavController(R.id.navHostFragment)
@@ -38,14 +37,25 @@ class MainActivity : AppCompatActivity() {
         drawerLayout.closeDrawer(binding.navView)
         val bundle = Bundle()
         bundle.putString("categoria",categoria)
-        navController.navigate(R.id.clothesFragment,bundle)
+        navController.navigate(R.id.clothesFragment,bundle, NavOptions.Builder().setPopUpTo(R.id.homeFragment,false).build())
         return true
     }
 
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.cart_menu,menu)
+        return super.onCreateOptionsMenu(menu)
+    }
 
+    override fun onOptionsItemSelected(item: MenuItem?): Boolean {
+        item?.let{
+            navController.navigate(R.id.cartFragment)
+        }
+        return super.onOptionsItemSelected(item)
+    }
 
     override fun onSupportNavigateUp(): Boolean {
-        return super.onSupportNavigateUp() || NavigationUI.navigateUp(navController,drawerLayout)
+        onBackPressed()
+        return super.onSupportNavigateUp() || navController.navigateUp(drawerLayout)
     }
 
     override fun onBackPressed() {

@@ -13,7 +13,7 @@ object Database {
         private var gson = Gson()
         var productsArray = mutableListOf<Product>()
 
-    fun getElencoProdotti(completion: (List<Product>) -> Unit) {
+    fun getElencoProdotti(){
         db.collection("negozi").document("00001").collection("prodotti")
             .get()
             .addOnSuccessListener { result ->
@@ -29,29 +29,29 @@ object Database {
                     //Log.d(TAG, "${document.id} => ${document.data}")
                 }
 
-                completion(productsArray)
             }
             .addOnFailureListener { exception ->
                 Log.d(TAG, "Error getting documents: ", exception)
             }
     }
 
-    fun getProdotto(id: String, completion: (Product) -> Unit) {
-        var product : Product? = null
+
+    fun getProdotto(id: String) : OneProduct{
+        var product = OneProduct()
         val docRef = db.collection("negozi").document("00001").collection("prodotti").document(id)
         docRef.get()
             .addOnSuccessListener { document ->
                 if (document != null) {
                     Log.d(TAG, "DocumentSnapshot data: ${document.data}")
-                   product = gson.fromJson(JSONObject(document.data).toString(), Product::class.java)
+                   product = gson.fromJson(JSONObject(document.data).toString(), OneProduct::class.java)
                 } else {
                     Log.d(TAG, "No such document")
                 }
-                product?.let { completion(it) }
             }
             .addOnFailureListener { exception ->
                 Log.d(TAG, "get failed with ", exception)
             }
+        return product
     }
 
     fun venduto(id: String, quant_disp: Int){

@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.fragment.findNavController
 
 /**
  * A simple [Fragment] subclass.
@@ -24,5 +25,6 @@ class CartFragment : Fragment() {
         //AGGIUNGERE L'AZIONE PER LA NAVIGAZIONE
         //ES: btnVai.setOnClickListener { Navigation.findNavController(view).navigate(R.id.action_homeToFiglio) }
     }
+
 
 }
