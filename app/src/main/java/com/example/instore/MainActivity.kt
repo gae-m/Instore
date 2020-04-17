@@ -1,7 +1,11 @@
 package com.example.instore
 
 import android.os.Bundle
+import android.util.Log
+import android.view.Menu
+import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.widget.SearchView
 import models.Database
 import androidx.databinding.DataBindingUtil
 import androidx.drawerlayout.widget.DrawerLayout
@@ -16,7 +20,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var drawerLayout: DrawerLayout
     private lateinit var appBarConfiguration: AppBarConfiguration
     private lateinit var navController: NavController
-
+    val queryListener = QueryListener()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -38,26 +42,42 @@ class MainActivity : AppCompatActivity() {
             goToClothes(it.title as String)
         }
 
+    }
 
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        when(navController.currentDestination?.id){
+            R.id.homeFragment,R.id.clothesFragment -> {
+                menuInflater.inflate(R.menu.cart_menu,menu)
+                (menu?.findItem(R.id.searchItem)?.actionView as SearchView).apply {
+                setOnQueryTextListener(queryListener)
+                }
+            }
+        }
+        return super.onCreateOptionsMenu(menu)
+    }
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when(item.itemId){
+            R.id.cartItem -> navController.navigate(R.id.cartFragment)
+        }
+        return super.onOptionsItemSelected(item)
     }
 
     fun goToClothes(categoria: String): Boolean{
         drawerLayout.closeDrawer(binding.navView)
         val bundle = Bundle()
         bundle.putString("categoria",categoria)
-        navController.navigate(R.id.clothesFragment,bundle)
+        navController.navigate(R.id.clothesFragment,bundle, NavOptions.Builder().setPopUpTo(R.id.homeFragment,false).build())
         return true
     }
 
 
-
     override fun onSupportNavigateUp(): Boolean {
-        return super.onSupportNavigateUp() || NavigationUI.navigateUp(navController,drawerLayout)
+        drawerLayout.closeDrawer(binding.navView)
+        return super.onSupportNavigateUp() || navController.navigateUp(drawerLayout)
     }
 
     override fun onBackPressed() {
         drawerLayout.closeDrawer(binding.navView)
         super.onBackPressed()
     }
-
 }

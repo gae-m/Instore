@@ -1,16 +1,15 @@
 package com.example.instore.home
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.example.instore.R
-import android.view.*
 import androidx.databinding.DataBindingUtil
 import androidx.navigation.NavController
 import androidx.navigation.fragment.findNavController
-import androidx.navigation.ui.NavigationUI
 import com.example.instore.databinding.FragmentHomeBinding
 
 
@@ -49,19 +48,9 @@ class HomeFragment : Fragment() {
                 navController.navigate(HomeFragmentDirections.actionHomeFragmentToClothesFragment("", true))
             }
         }
-
-        setHasOptionsMenu(true)
+        requireActivity().invalidateOptionsMenu()
 
         return binding.root
-    }
-
-    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
-        super.onCreateOptionsMenu(menu, inflater)
-        inflater.inflate(R.menu.cart_menu,menu)
-    }
-
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        return super.onOptionsItemSelected(item) || NavigationUI.onNavDestinationSelected(item,navController)
     }
 
 
