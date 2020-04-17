@@ -1,7 +1,6 @@
 package com.example.instore
 
 import android.util.Log
-import android.widget.SearchView
 
 class QueryListener: androidx.appcompat.widget.SearchView.OnQueryTextListener {
     override fun onQueryTextSubmit(query: String?): Boolean {

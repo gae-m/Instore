@@ -1,16 +1,11 @@
 package com.example.instore
 
-import android.app.SearchManager
-import android.content.Context
-import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.Menu
-import android.view.MenuInflater
 import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.SearchView
-import androidx.core.content.ContextCompat
 import models.Database
 import androidx.databinding.DataBindingUtil
 import androidx.drawerlayout.widget.DrawerLayout
@@ -47,9 +42,6 @@ class MainActivity : AppCompatActivity() {
             R.id.homeFragment,R.id.clothesFragment -> {
                 menuInflater.inflate(R.menu.cart_menu,menu)
                 (menu?.findItem(R.id.searchItem)?.actionView as SearchView).apply {
-                setOnSearchClickListener{
-                    Log.i("HomeFragment","search Pressed")
-                }
                 setOnQueryTextListener(queryListener)
                 }
             }

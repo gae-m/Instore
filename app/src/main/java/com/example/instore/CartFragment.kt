@@ -3,7 +3,6 @@ package com.example.instore
 import android.os.Bundle
 import android.view.*
 import androidx.fragment.app.Fragment
-import androidx.navigation.fragment.findNavController
 
 /**
  * A simple [Fragment] subclass.
