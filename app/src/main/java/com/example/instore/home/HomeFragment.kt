@@ -37,16 +37,16 @@ class HomeFragment : Fragment() {
 
         binding.apply {
             uomoImageView.setOnClickListener {
-                goToClothes(it.contentDescription as String)
+                goToClothes("Uomo")
             }
             donnaImageView.setOnClickListener {
-                goToClothes(it.contentDescription as String)
+                goToClothes("Donna")
             }
             bambinoImageView.setOnClickListener {
-                goToClothes(it.contentDescription as String)
+                goToClothes("Bambino")
             }
             nuoviArriviImageView.setOnClickListener {
-                goToClothes(it.contentDescription as String)
+                navController.navigate(HomeFragmentDirections.actionHomeFragmentToClothesFragment("", true))
             }
         }
 

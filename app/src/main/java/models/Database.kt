@@ -1,6 +1,7 @@
 package models
 
 import android.util.Log
+import com.example.instore.cart.CartAdpter
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 import com.google.gson.Gson
@@ -8,28 +9,29 @@ import org.json.JSONObject
 
 object Database {
 
-        private var db = Firebase.firestore
-        private var TAG = "instore"
-        private var gson = Gson()
-        var productsArray = mutableListOf<Product>()
+    private var db = Firebase.firestore
+    private var TAG = "instore"
+    private var gson = Gson()
+    var productsArray = mutableListOf<Product>()
 
-    fun getElencoProdotti(completion: (List<Product>) -> Unit) {
+    var cart = mutableListOf<MutableMap<String, Any?>>()
+
+    fun getElencoProdotti() {
+
         db.collection("negozi").document("00001").collection("prodotti")
             .get()
             .addOnSuccessListener { result ->
                 for (document in result) {
                     //println(document.id)
 
-                    var product = gson.fromJson(JSONObject(document.data).toString(), Product::class.java)
+                    var product =
+                        gson.fromJson(JSONObject(document.data).toString(), Product::class.java)
                     productsArray.add(product)
-
                     //var productToUpload = gson.toJson(product)
                     //println(product.taglia)
                     //println(product.nome)
                     //Log.d(TAG, "${document.id} => ${document.data}")
                 }
-
-                completion(productsArray)
             }
             .addOnFailureListener { exception ->
                 Log.d(TAG, "Error getting documents: ", exception)
@@ -37,13 +39,14 @@ object Database {
     }
 
     fun getProdotto(id: String, completion: (Product) -> Unit) {
-        var product : Product? = null
+        var product: Product? = null
         val docRef = db.collection("negozi").document("00001").collection("prodotti").document(id)
         docRef.get()
             .addOnSuccessListener { document ->
                 if (document != null) {
                     Log.d(TAG, "DocumentSnapshot data: ${document.data}")
-                   product = gson.fromJson(JSONObject(document.data).toString(), Product::class.java)
+                    product =
+                        gson.fromJson(JSONObject(document.data).toString(), Product::class.java)
                 } else {
                     Log.d(TAG, "No such document")
                 }
@@ -54,12 +57,13 @@ object Database {
             }
     }
 
-    fun venduto(id: String, quant_disp: Int){
-        val washingtonRef = db.collection("negozi").document("00001").collection("prodotti").document(id)
+    fun venduto(id: String, quant_disp: String, quant_vend: String) {
+        val washingtonRef =
+            db.collection("negozi").document("00001").collection("prodotti").document(id)
 
 // Set the "isCapital" field of the city 'DC'
         washingtonRef
-            .update("quant_disp", quant_disp - 1)
+            .update(mapOf("quantita_disp.L" to 10))
             .addOnSuccessListener { Log.d(TAG, "DocumentSnapshot successfully updated!") }
             .addOnFailureListener { e -> Log.w(TAG, "Error updating document", e) }
     }
@@ -86,23 +90,24 @@ prova_button.setOnClickListener {
 
 }*/
 
+    fun loadProducts(completion: (List<Product>) -> Unit) {
+        val docRef = db.collection("negozi").document("00001").collection("prodotti")
+    docRef.addSnapshotListener { snapshot, e ->
+        if (e != null) {
+            Log.w(TAG, "Listen failed.", e)
+            return@addSnapshotListener
+        }
 
-    /*AVVISO CAMBIAMENTO REALTIME DI UN CAMPO DI UN RECORD
-     val docRef = db.collection("products").document("PMql4plt8sA1YXiq1DoW")
-     docRef.addSnapshotListener { snapshot, e ->
-         if (e != null) {
-             Log.w(TAG, "Listen failed.", e)
-             return@addSnapshotListener
-         }
-
-         if (snapshot != null && snapshot.exists()) {
-             Log.d(TAG, "Current data: ${snapshot.data}")
-             product = gson.fromJson(JSONObject(snapshot.data).toString(), Product::class.java)
-             println(product?.prezzo)
-             println(product?.name)
-
-         } else {
-             Log.d(TAG, "Current data: null")
-         }
-     }*/
+        if (snapshot != null) {
+            productsArray = mutableListOf()
+            snapshot.documents.forEach { d ->
+                var product = gson.fromJson(JSONObject(d.data).toString(), Product::class.java)
+                productsArray.add(product)
+            }
+            completion(productsArray)
+        } else {
+            Log.d(TAG, "Current data: null")
+        }
+    }
+}
 }

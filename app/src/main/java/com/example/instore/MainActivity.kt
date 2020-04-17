@@ -7,6 +7,7 @@ import androidx.databinding.DataBindingUtil
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.navigation.*
 import androidx.navigation.ui.*
+import com.example.instore.cart.CartFragment
 import com.example.instore.databinding.ActivityMainBinding
 
 
@@ -16,12 +17,16 @@ class MainActivity : AppCompatActivity() {
     private lateinit var appBarConfiguration: AppBarConfiguration
     private lateinit var navController: NavController
 
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        Database.getElencoProdotti {
-            /*list.forEach { element->
-                println(element.id)*/
-                }
+
+        //Database.getElencoProdotti()
+
+        Database.loadProducts {
+            println(it)
+        }
+
         binding = DataBindingUtil.setContentView<ActivityMainBinding>(this,R.layout.activity_main)
         drawerLayout = binding.drawerLayout
         navController = findNavController(R.id.navHostFragment)
@@ -32,17 +37,15 @@ class MainActivity : AppCompatActivity() {
             goToClothes(it.title as String)
         }
 
+
     }
 
     fun goToClothes(categoria: String): Boolean{
         drawerLayout.closeDrawer(binding.navView)
         val bundle = Bundle()
         bundle.putString("categoria",categoria)
-        if (navController.currentDestination?.id!=R.id.clothesFragment||(navController.currentDestination?.label as String) !=categoria){
-            navController.navigate(R.id.clothesFragment,bundle)
-            return true
-        }
-        return false
+        navController.navigate(R.id.clothesFragment,bundle)
+        return true
     }
 
 
@@ -55,4 +58,5 @@ class MainActivity : AppCompatActivity() {
         drawerLayout.closeDrawer(binding.navView)
         super.onBackPressed()
     }
+
 }

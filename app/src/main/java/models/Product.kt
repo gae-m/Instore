@@ -1,15 +1,18 @@
 package models
 
-class Product {
+import android.os.Parcelable
+import kotlinx.android.parcel.Parcelize
+
+@Parcelize
+class Product : Parcelable {
     var id: String = ""
     var nome: String = ""
-    var s = mapOf("taglia" to "", "quant_disp" to 0)
-    var m = mapOf("taglia" to "", "quant_disp" to 0)
-    var l = mapOf("taglia" to "", "quant_disp" to 0)
+    var quantita_disp = mapOf<String, Int>("S" to 0, "M" to 0, "L" to 0 )
     var prezzo: Double = 0.0
     var colore: String = ""
-    var sesso: String = ""
-    var anno: Int = 0
+    var categoria: String = ""
     var imgUrl: String = ""
+    var nuovi_arrivi: Boolean = false
+    var descrizione: String = ""
 
 }
