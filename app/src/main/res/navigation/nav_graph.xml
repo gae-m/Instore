@@ -38,7 +38,7 @@
     </fragment>
     <fragment
         android:id="@+id/cartFragment"
-        android:name="com.example.instore.CartFragment"
+        android:name="com.example.instore.cart.CartFragment"
         android:label="@string/cart_label"
         tools:layout="@layout/fragment_cart">
         <action

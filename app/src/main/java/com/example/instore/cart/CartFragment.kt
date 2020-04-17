@@ -1,8 +1,9 @@
-package com.example.instore
+package com.example.instore.cart
 
 import android.os.Bundle
 import android.view.*
 import androidx.fragment.app.Fragment
+import com.example.instore.R
 
 /**
  * A simple [Fragment] subclass.
