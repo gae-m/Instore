@@ -50,6 +50,7 @@ class DressFragment : Fragment() {
         }
 
         buttonAggiungi.setOnClickListener {
+
             if (Database.cart.isEmpty()) {
                 product.let { p ->
                     var map = mutableMapOf<String, Any?>(

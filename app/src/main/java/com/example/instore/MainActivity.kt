@@ -24,6 +24,7 @@ class MainActivity : AppCompatActivity() {
         //Database.getElencoProdotti()
 
         Database.loadProducts {
+            println("HEIIIIIIIII------------------------")
             println(it)
         }
 

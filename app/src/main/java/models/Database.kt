@@ -63,7 +63,7 @@ object Database {
 
 // Set the "isCapital" field of the city 'DC'
         washingtonRef
-            .update(mapOf("quantita_disp.L" to 10))
+            .update(mapOf("quantita_disp.S" to quant_disp.toInt() - quant_vend.toInt()))
             .addOnSuccessListener { Log.d(TAG, "DocumentSnapshot successfully updated!") }
             .addOnFailureListener { e -> Log.w(TAG, "Error updating document", e) }
     }

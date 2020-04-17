@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.instore.R
 import kotlinx.android.synthetic.main.fragment_cart.*
@@ -37,6 +38,9 @@ class CartFragment : Fragment() {
                     }
                 }
                 }
+            Database.cart = mutableListOf<MutableMap<String, Any?>>()
+            adapter.notifyDataSetChanged()
+            findNavController().popBackStack()
             }
         }
 
