@@ -1,15 +1,20 @@
 package com.example.instore.home
 
+import android.app.SearchManager
+import android.content.Context
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.example.instore.R
 import android.view.*
+import androidx.appcompat.widget.SearchView
 import androidx.databinding.DataBindingUtil
 import androidx.navigation.NavController
 import androidx.navigation.fragment.findNavController
+import com.example.instore.QueryListener
 import com.example.instore.databinding.FragmentHomeBinding
 
 
@@ -48,23 +53,33 @@ class HomeFragment : Fragment() {
                 goToClothes(it.contentDescription as String)
             }
         }
-        setHasOptionsMenu(true)
+        requireActivity().invalidateOptionsMenu()
+//        setHasOptionsMenu(true)
 
 
         return binding.root
     }
 
-    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
-        super.onCreateOptionsMenu(menu, inflater)
-        inflater.inflate(R.menu.cart_menu,menu)
-    }
-
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        when(item.itemId){
-            R.id.cartItem -> navController.navigate(R.id.cartFragment)
-        }
-        return super.onOptionsItemSelected(item)
-    }
+//    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+//        super.onCreateOptionsMenu(menu, inflater)
+//        inflater.inflate(R.menu.cart_menu,menu)
+//        val searchManager = requireContext().getSystemService(Context.SEARCH_SERVICE) as SearchManager
+//        (menu.findItem(R.id.searchItem).actionView as SearchView).apply {
+//            // Assumes current activity is the searchable activity
+//            setOnSearchClickListener{
+//                Log.i("HomeFragment","search Pressed")
+//            }
+//            setOnQueryTextListener(QueryListener())
+////            setSearchableInfo(searchManager.getSearchableInfo())
+//        }
+//    }
+//
+//    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+//        when(item.itemId){
+//            R.id.cartItem -> navController.navigate(R.id.cartFragment)
+//        }
+//        return super.onOptionsItemSelected(item)
+//    }
 
 
     fun goToClothes(categoria: String){

@@ -33,7 +33,8 @@ class ClothesFragment : Fragment() {
         arguments?.let{
             (activity as AppCompatActivity).supportActionBar?.title = ClothesFragmentArgs.fromBundle(it).categoria
         }
-        setHasOptionsMenu(true)
+//        setHasOptionsMenu(true)
+        requireActivity().invalidateOptionsMenu()
         return binding.root
     }
 
@@ -50,15 +51,15 @@ class ClothesFragment : Fragment() {
         listaProdotti.adapter = adapter
 
     }
-    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
-        super.onCreateOptionsMenu(menu, inflater)
-        inflater.inflate(R.menu.cart_menu,menu)
-    }
-
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        when(item.itemId){
-            R.id.cartItem -> findNavController().navigate(R.id.cartFragment)
-        }
-        return super.onOptionsItemSelected(item)
-    }
+//    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+//        super.onCreateOptionsMenu(menu, inflater)
+//        inflater.inflate(R.menu.cart_menu,menu)
+//    }
+//
+//    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+//        when(item.itemId){
+//            R.id.cartItem -> findNavController().navigate(R.id.cartFragment)
+//        }
+//        return super.onOptionsItemSelected(item)
+//    }
 }

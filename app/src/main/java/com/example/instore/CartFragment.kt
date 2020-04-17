@@ -15,6 +15,7 @@ class CartFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
+        requireActivity().invalidateOptionsMenu()
         return inflater.inflate(R.layout.fragment_cart, container, false)
     }
 
