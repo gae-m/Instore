@@ -12,5 +12,6 @@
     <string name="cart_label">Carrello</string>
     <string name="search">Search</string>
     <string name="bambina_label">Bambina</string>
+    <string name="filtri">Filtri</string>
 
 </resources>
