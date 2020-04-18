@@ -1,18 +1,25 @@
 package com.example.instore
 
+import android.content.Context
+import android.opengl.Visibility
 import android.os.Bundle
 import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
+import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.SearchView
 import models.Database
 import androidx.databinding.DataBindingUtil
 import androidx.drawerlayout.widget.DrawerLayout
+import androidx.fragment.app.Fragment
+import androidx.fragment.app.findFragment
 import androidx.navigation.*
+import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.*
 import com.example.instore.cart.CartFragment
 import com.example.instore.databinding.ActivityMainBinding
+import kotlinx.android.synthetic.main.activity_main.*
 
 
 class MainActivity : AppCompatActivity() {
@@ -20,7 +27,6 @@ class MainActivity : AppCompatActivity() {
     private lateinit var drawerLayout: DrawerLayout
     private lateinit var appBarConfiguration: AppBarConfiguration
     private lateinit var navController: NavController
-    val queryListener = QueryListener()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -48,8 +54,24 @@ class MainActivity : AppCompatActivity() {
         when(navController.currentDestination?.id){
             R.id.homeFragment,R.id.clothesFragment -> {
                 menuInflater.inflate(R.menu.cart_menu,menu)
-                (menu?.findItem(R.id.searchItem)?.actionView as SearchView).apply {
-                setOnQueryTextListener(queryListener)
+                val searchItem = menu?.findItem(R.id.searchItem)
+                (searchItem?.actionView as SearchView).apply {
+                    setOnQueryTextListener(QueryListener(searchItem,navController))
+                    setOnQueryTextFocusChangeListener { v, hasFocus ->
+                        if(hasFocus) binding.searchBackground.visibility = View.VISIBLE
+                        else{
+                            searchItem.collapseActionView()
+                            binding.searchBackground.visibility = View.GONE
+                        }
+                    }
+                }
+
+            }
+            R.id.dressFragment->{
+                menuInflater.inflate(R.menu.cart_menu,menu)
+                menu?.findItem(R.id.searchItem)?.apply {
+                    setVisible(false)
+                    setEnabled(false)
                 }
             }
         }
@@ -80,4 +102,5 @@ class MainActivity : AppCompatActivity() {
         drawerLayout.closeDrawer(binding.navView)
         super.onBackPressed()
     }
+
 }

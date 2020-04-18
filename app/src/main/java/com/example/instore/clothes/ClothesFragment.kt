@@ -20,7 +20,6 @@ class ClothesFragment : Fragment() {
     private var gridLayoutManager:GridLayoutManager? = null
     private lateinit var binding: FragmentClothesBinding
     var categoria: String = ""
-    var nuovi_arrivi: Boolean = false
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -35,9 +34,6 @@ class ClothesFragment : Fragment() {
         }
 
         requireActivity().invalidateOptionsMenu()
-        arguments?.let{
-            nuovi_arrivi = ClothesFragmentArgs.fromBundle(it).nuoviArrivi
-        }
         return binding.root
     }
 
@@ -48,24 +44,35 @@ class ClothesFragment : Fragment() {
 
         var tmpProductArray = mutableListOf<Product>()
         gridLayoutManager = GridLayoutManager(requireContext(), 2, LinearLayoutManager.VERTICAL, false)
-        listaProdotti.layoutManager = gridLayoutManager
-        listaProdotti.setHasFixedSize(true)
+        binding.listaProdotti.layoutManager = gridLayoutManager
 
-        Database.productsArray.forEach {
-
-            if (nuovi_arrivi) {
-                if (it.nuovi_arrivi == nuovi_arrivi) {
-                    tmpProductArray.add(it)
+        binding.listaProdotti.setHasFixedSize(true)
+        when(categoria){
+            "Uomo","Donna","Bambino"->{
+                Database.productsArray.forEach {
+                    if (it.categoria == categoria) tmpProductArray.add(it)
                 }
-            } else {
-                if (it.categoria == categoria) {
-                    tmpProductArray.add(it)
+            }
+            "Nuovi Arrivi"->{
+                Database.productsArray.forEach {
+                    if (it.nuovi_arrivi) tmpProductArray.add(it)
+                }
+            }
+            "Risultati"->{
+                arguments?.getString("query")?.let {query: String ->
+                    Database.productsArray.forEach {
+                        if (it.nome.contains(query,true) ||
+                            it.descrizione.contains(query,true) ||
+                            it.categoria.contains(query,true) ||
+                            it.colore.contains(query,true)) tmpProductArray.add(it)
+                    }
                 }
             }
         }
 
+
         adapter = ClothesAdapter(tmpProductArray, requireContext())
-        listaProdotti.adapter = adapter
+        binding.listaProdotti.adapter = adapter
 
     }
 

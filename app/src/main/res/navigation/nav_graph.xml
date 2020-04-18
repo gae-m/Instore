@@ -26,16 +26,12 @@
             android:name="categoria"
             android:defaultValue='""'
             app:argType="string" />
-        <argument
-            android:name="nuovi_arrivi"
-            app:argType="boolean"
-            android:defaultValue="false" />
     </fragment>
     <fragment
         android:id="@+id/dressFragment"
         android:name="com.example.instore.DressFragment"
         android:label="@string/dress_label"
-        tools:layout="@layout/fragment_dress" >
+        tools:layout="@layout/fragment_dress">
         <argument
             android:name="idProdotto"
             app:argType="string" />

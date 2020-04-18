@@ -45,7 +45,7 @@ class HomeFragment : Fragment() {
                 goToClothes("Bambino")
             }
             nuoviArriviImageView.setOnClickListener {
-                navController.navigate(HomeFragmentDirections.actionHomeFragmentToClothesFragment("", true))
+                goToClothes("Nuovi Arrivi")
             }
         }
         requireActivity().invalidateOptionsMenu()

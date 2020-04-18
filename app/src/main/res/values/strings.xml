@@ -8,7 +8,7 @@
     <string name="nuovi_arrivi_menu">Nuovi Arrivi</string>
     <string name="home_label">Home</string>
     <string name="clothes_label">Catalogo</string>
-    <string name="dress_label" />
+    <string name="dress_label" >\t</string>
     <string name="cart_label">Carrello</string>
     <string name="search">Search</string>
 
