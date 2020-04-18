@@ -29,7 +29,7 @@
     </fragment>
     <fragment
         android:id="@+id/dressFragment"
-        android:name="com.example.instore.DressFragment"
+        android:name="com.example.instore.dress.DressFragment"
         android:label="@string/dress_label"
         tools:layout="@layout/fragment_dress">
         <argument
