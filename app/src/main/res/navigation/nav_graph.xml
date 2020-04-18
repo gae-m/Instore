@@ -26,6 +26,9 @@
             android:name="categoria"
             android:defaultValue='""'
             app:argType="string" />
+        <action
+            android:id="@+id/action_clothesFragment_to_filtroFragment"
+            app:destination="@id/filtroFragment" />
     </fragment>
     <fragment
         android:id="@+id/dressFragment"
@@ -50,4 +53,16 @@
         android:name="com.example.instore.QrCodeFragment"
         android:label="fragment_qr_code"
         tools:layout="@layout/fragment_qr_code" />
+    <fragment
+        android:id="@+id/filtroFragment"
+        android:name="com.example.instore.FiltroFragment"
+        android:label="@string/filtri"
+        tools:layout="@layout/fragment_filtro" >
+        <action
+            android:id="@+id/action_filtroFragment_to_clothesFragment"
+            app:destination="@id/clothesFragment" />
+        <argument
+            android:name="tmpProductArray"
+            app:argType="models.Product[]" />
+    </fragment>
 </navigation>

@@ -55,7 +55,6 @@ class ClothesFragment : Fragment() {
         var tmpProductArray = mutableListOf<Product>()
         gridLayoutManager = GridLayoutManager(requireContext(), spanCount, LinearLayoutManager.VERTICAL, false)
         binding.listaProdotti.layoutManager = gridLayoutManager
-
         binding.listaProdotti.setHasFixedSize(true)
         when(categoria){
             "Uomo","Donna","Bambino","Bambina"->{

@@ -44,7 +44,6 @@ class ClothesAdapter(val productList: MutableList<Product>, val context: Context
     }
 
     class ItemHolder(itemView: View) : RecyclerView.ViewHolder(itemView){
-
         var tvImage = itemView.findViewById<ImageView>(R.id.imageTest)
         var tvNome = itemView.findViewById<TextView>(R.id.textNome)
         var tvPrezzo = itemView.findViewById<TextView>(R.id.textPrezzo)
