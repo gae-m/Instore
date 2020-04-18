@@ -36,9 +36,8 @@ class ClothesAdapter(var productList: MutableList<Product>, var context: Context
 
         holder.itemView.setOnClickListener {
 
-            // Creo un bundle e vi inserisco la birra da visualizzare
             val x = Bundle()
-            x.putParcelable("prodotto", prodotto)     //TODO: Il nome dell'ogggetto andrebbe inserito in un solo punto!!
+            x.putParcelable("prodotto", prodotto)
             Navigation.findNavController(it).navigate(R.id.action_clothesFragment_to_dressFragment, x)
         }
 

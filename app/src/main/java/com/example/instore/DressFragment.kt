@@ -36,7 +36,7 @@ class DressFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         arguments?.let {
-            val prodotto: Product? = it.getParcelable("prodotto")   //TODO: Il nome dovrebbe essere in un unico punto!!
+            val prodotto: Product? = it.getParcelable("prodotto")
             product = prodotto
             prodotto?.let {
 
