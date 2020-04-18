@@ -5,9 +5,8 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.databinding.DataBindingUtil
+import android.widget.Toast
 import com.bumptech.glide.Glide
-import com.example.instore.databinding.FragmentDressBinding
 import kotlinx.android.synthetic.main.fragment_dress.*
 import models.Database
 import models.Product
@@ -18,34 +17,39 @@ import models.Product
 
 
 class DressFragment : Fragment() {
-    private lateinit var binding: FragmentDressBinding
-    private lateinit var product: Product
-    private var taglia: String = "S"
-    private var quantita_selz: Int = 1
+
+    var product: Product? = null
+    var taglia: String = "S"
+    var quantita_selz: Int = 1
+    var isFind: Boolean = false
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        binding = DataBindingUtil.inflate(inflater,R.layout.fragment_dress, container, false)
+        // Inflate the layout for this fragment
         requireActivity().invalidateOptionsMenu()
-        return binding.root
+        return inflater.inflate(R.layout.fragment_dress, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
         arguments?.let {
-            product = it.getParcelable("prodotto")
-            binding.textDescrizione.text = product.descrizione
-            binding.textColoreProdotto.text = product.colore
-            binding.textNomeProdotto.text = product.nome
-            binding.textPrezzoProdotto.text = product.prezzo.toString()
-            Glide.with(this).load(product.imgUrl).into(binding.imageView2)
+            val prodotto: Product? = it.getParcelable("prodotto")   //TODO: Il nome dovrebbe essere in un unico punto!!
+            product = prodotto
+            prodotto?.let {
+
+                textDescrizione.text = prodotto.descrizione
+                textColoreProdotto.text = prodotto.colore
+                textNomeProdotto.text = prodotto.nome
+                textPrezzoProdotto.text = prodotto.prezzo.toString()
+                Glide.with(this).load(prodotto.img[0]).into(imageView2)
+
+            }
         }
 
-        binding.buttonAggiungi.setOnClickListener {
-            var isFind = false
+        buttonAggiungi.setOnClickListener {
 
             if (Database.cart.isEmpty()) {
                 product.let { p ->
@@ -54,11 +58,11 @@ class DressFragment : Fragment() {
                         "taglia" to taglia,
                         "quantita_selz" to quantita_selz,
                         "quantita_disp" to (product?.quantita_disp?.get("S")),
-                        "imgUrl" to product?.imgUrl,
+                        "imgUrl" to product?.img?.get(0),
                         "nome" to product?.nome,
                         "prezzo" to product?.prezzo)
-                        println("ISEMPTY-------------------")
-                        Database.cart.add(map)
+                    println("ISEMPTY-------------------")
+                    Database.cart.add(map)
                 }
             } else {
                 Database.cart.forEach { e ->
@@ -78,17 +82,17 @@ class DressFragment : Fragment() {
                             "taglia" to taglia,
                             "quantita_selz" to quantita_selz,
                             "quantita_disp" to (product?.quantita_disp?.get("S")),
-                            "imgUrl" to product?.imgUrl,
+                            "imgUrl" to product?.img?.get(0),
                             "nome" to product?.nome,
                             "prezzo" to product?.prezzo)
 
                         Database.cart.add(map)
-                        }
+                    }
 
                 }
             }
-
+            Toast.makeText(requireContext(), "Prodotto aggiunto al carrello", Toast.LENGTH_SHORT).show()
         }
-            //Database.cartArray.add(prodottoCart)
+        //Database.cartArray.add(prodottoCart)
     }
 }

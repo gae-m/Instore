@@ -13,56 +13,14 @@ object Database {
     private var TAG = "instore"
     private var gson = Gson()
     var productsArray = mutableListOf<Product>()
-
     var cart = mutableListOf<MutableMap<String, Any?>>()
 
-    fun getElencoProdotti() {
-
-        db.collection("negozi").document("00001").collection("prodotti")
-            .get()
-            .addOnSuccessListener { result ->
-                for (document in result) {
-                    //println(document.id)
-
-                    var product =
-                        gson.fromJson(JSONObject(document.data).toString(), Product::class.java)
-                    productsArray.add(product)
-                    //var productToUpload = gson.toJson(product)
-                    //println(product.taglia)
-                    //println(product.nome)
-                    //Log.d(TAG, "${document.id} => ${document.data}")
-                }
-            }
-            .addOnFailureListener { exception ->
-                Log.d(TAG, "Error getting documents: ", exception)
-            }
-    }
-
-    fun getProdotto(id: String, completion: (Product) -> Unit) {
-        var product: Product? = null
-        val docRef = db.collection("negozi").document("00001").collection("prodotti").document(id)
-        docRef.get()
-            .addOnSuccessListener { document ->
-                if (document != null) {
-                    Log.d(TAG, "DocumentSnapshot data: ${document.data}")
-                    product =
-                        gson.fromJson(JSONObject(document.data).toString(), Product::class.java)
-                } else {
-                    Log.d(TAG, "No such document")
-                }
-                product?.let { completion(it) }
-            }
-            .addOnFailureListener { exception ->
-                Log.d(TAG, "get failed with ", exception)
-            }
-    }
 
     fun venduto(id: String, quant_disp: String, quant_vend: String) {
-        val washingtonRef =
+        val docRef =
             db.collection("negozi").document("00001").collection("prodotti").document(id)
 
-// Set the "isCapital" field of the city 'DC'
-        washingtonRef
+        docRef
             .update(mapOf("quantita_disp.S" to quant_disp.toInt() - quant_vend.toInt()))
             .addOnSuccessListener { Log.d(TAG, "DocumentSnapshot successfully updated!") }
             .addOnFailureListener { e -> Log.w(TAG, "Error updating document", e) }

@@ -23,26 +23,26 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toEndOf="@+id/uomo_imageView"
+            app:layout_constraintStart_toEndOf="@+id/bambinaImageView"
             app:layout_constraintTop_toBottomOf="@+id/donna_imageView"
             app:srcCompat="@drawable/bambino" />
 
         <ImageView
-            android:id="@+id/uomo_imageView"
+            android:id="@+id/bambinaImageView"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_marginStart="@dimen/home_button_margin"
             android:layout_marginEnd="@dimen/home_button_margin"
             android:layout_marginBottom="@dimen/home_button_margin"
             android:alpha="1"
-            android:contentDescription="@string/uomo"
+            android:contentDescription="@string/bambina_label"
             android:scaleType="centerCrop"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/bambino_imageView"
             app:layout_constraintHorizontal_bias="0.6"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/nuoviArrivi_imageView"
-            app:srcCompat="@drawable/uomo" />
+            app:layout_constraintTop_toBottomOf="@+id/uomoImageView"
+            app:srcCompat="@drawable/nuovi_arrivi" />
 
         <ImageView
             android:id="@+id/donna_imageView"
@@ -57,7 +57,7 @@
             app:layout_constraintBottom_toTopOf="@+id/bambino_imageView"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toEndOf="@+id/nuoviArrivi_imageView"
+            app:layout_constraintStart_toEndOf="@+id/uomoImageView"
             app:layout_constraintTop_toBottomOf="@+id/viewPager"
             app:srcCompat="@drawable/donna" />
 
@@ -72,7 +72,7 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <ImageView
-            android:id="@+id/nuoviArrivi_imageView"
+            android:id="@+id/uomoImageView"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_marginStart="@dimen/home_button_margin"
@@ -80,23 +80,23 @@
             android:layout_marginEnd="@dimen/home_button_margin"
             android:layout_marginBottom="@dimen/home_button_margin"
             android:alpha="1"
-            android:contentDescription="@string/nuovi_arrivi_menu"
+            android:contentDescription="@string/uomo"
             android:scaleType="centerCrop"
-            app:layout_constraintBottom_toTopOf="@+id/uomo_imageView"
+            app:layout_constraintBottom_toTopOf="@+id/bambinaImageView"
             app:layout_constraintEnd_toStartOf="@+id/donna_imageView"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/viewPager"
-            app:srcCompat="@drawable/nuovi_arrivi" />
+            app:srcCompat="@drawable/uomo" />
 
         <TextView
-            android:id="@+id/nuoviArrivi_textView"
+            android:id="@+id/uomo_textView"
             style="@style/home_label"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/nuovi_arrivi"
-            app:layout_constraintBottom_toBottomOf="@+id/nuoviArrivi_imageView"
-            app:layout_constraintStart_toStartOf="@+id/nuoviArrivi_imageView" />
+            android:text="@string/uomo"
+            app:layout_constraintBottom_toBottomOf="@+id/uomoImageView"
+            app:layout_constraintStart_toStartOf="@+id/uomoImageView" />
 
         <TextView
             android:id="@+id/donna_textView"
@@ -108,13 +108,13 @@
             app:layout_constraintStart_toStartOf="@+id/donna_imageView" />
 
         <TextView
-            android:id="@+id/uomo_textView"
+            android:id="@+id/bambina_textView"
             style="@style/home_label"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/uomo"
-            app:layout_constraintBottom_toBottomOf="@+id/uomo_imageView"
-            app:layout_constraintStart_toStartOf="@+id/uomo_imageView" />
+            android:text="@string/bambina_label"
+            app:layout_constraintBottom_toBottomOf="@+id/bambinaImageView"
+            app:layout_constraintStart_toStartOf="@+id/bambinaImageView" />
 
         <TextView
             android:id="@+id/bambino_textView"

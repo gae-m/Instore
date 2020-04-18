@@ -11,7 +11,7 @@ class Product : Parcelable {
     var prezzo: Double = 0.0
     var colore: String = ""
     var categoria: String = ""
-    var imgUrl: String = ""
+    var img = arrayOf("", "", "", "")
     var nuovi_arrivi: Boolean = false
     var descrizione: String = ""
 

@@ -11,6 +11,7 @@ import androidx.databinding.DataBindingUtil
 import androidx.navigation.NavController
 import androidx.navigation.fragment.findNavController
 import com.example.instore.databinding.FragmentHomeBinding
+import kotlinx.android.synthetic.main.fragment_home.*
 
 
 class HomeFragment : Fragment() {
@@ -44,8 +45,8 @@ class HomeFragment : Fragment() {
             bambinoImageView.setOnClickListener {
                 goToClothes("Bambino")
             }
-            nuoviArriviImageView.setOnClickListener {
-                goToClothes("Nuovi Arrivi")
+            bambinaImageView.setOnClickListener {
+                goToClothes("Bambina")
             }
         }
         requireActivity().invalidateOptionsMenu()

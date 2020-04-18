@@ -19,7 +19,8 @@ class ClothesFragment : Fragment() {
     private lateinit var adapter: ClothesAdapter
     private var gridLayoutManager:GridLayoutManager? = null
     private lateinit var binding: FragmentClothesBinding
-    var categoria: String = ""
+    private var categoria: String = ""
+    private var spanCount: Int = 2
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -41,21 +42,25 @@ class ClothesFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        buttonSpanCount2.setOnClickListener {
+            spanCount = 2
+            getFragmentManager()?.beginTransaction()?.detach(this)?.attach(this)?.commit()
+        }
+
+        buttonSpanCount1.setOnClickListener {
+            spanCount = 1
+            getFragmentManager()?.beginTransaction()?.detach(this)?.attach(this)?.commit()
+        }
 
         var tmpProductArray = mutableListOf<Product>()
-        gridLayoutManager = GridLayoutManager(requireContext(), 2, LinearLayoutManager.VERTICAL, false)
+        gridLayoutManager = GridLayoutManager(requireContext(), spanCount, LinearLayoutManager.VERTICAL, false)
         binding.listaProdotti.layoutManager = gridLayoutManager
 
         binding.listaProdotti.setHasFixedSize(true)
         when(categoria){
-            "Uomo","Donna","Bambino"->{
+            "Uomo","Donna","Bambino","Bambina"->{
                 Database.productsArray.forEach {
                     if (it.categoria == categoria) tmpProductArray.add(it)
-                }
-            }
-            "Nuovi Arrivi"->{
-                Database.productsArray.forEach {
-                    if (it.nuovi_arrivi) tmpProductArray.add(it)
                 }
             }
             "Risultati"->{

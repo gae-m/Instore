@@ -10,6 +10,7 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.instore.R
+import kotlinx.android.synthetic.main.riga_cart.view.*
 import models.OnceProduct
 import kotlin.text.Typography.euro
 
@@ -32,7 +33,12 @@ class CartAdpter(val cartList: MutableList<MutableMap<String, Any?>>, val contex
         holder.tvNome.text = prodottoCart["nome"] as String
         holder.tvColore.text = prodottoCart["prezzo"].toString() + " " + euro
 
-        holder.itemView.setOnClickListener {
+        holder.itemView.buttonDelete.setOnClickListener {
+
+            cartList.removeAt(position)
+            this.notifyDataSetChanged()
+            this.notifyItemRemoved(position)
+
         }
 
     }
@@ -40,9 +46,9 @@ class CartAdpter(val cartList: MutableList<MutableMap<String, Any?>>, val contex
 
 
 class ItemHolder(itemView: View) : RecyclerView.ViewHolder(itemView){
+
     var tvImage = itemView.findViewById<ImageView>(R.id.imageCart)
     var tvNome = itemView.findViewById<TextView>(R.id.textNomeCart)
     var tvColore = itemView.findViewById<TextView>(R.id.textColoreCart)
-
 
 }
