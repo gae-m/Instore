@@ -19,7 +19,9 @@ import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.*
 import com.example.instore.cart.CartFragment
 import com.example.instore.databinding.ActivityMainBinding
+import com.example.instore.home.HomeFragment
 import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.coroutines.delay
 
 
 class MainActivity : AppCompatActivity() {
@@ -31,7 +33,7 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        //Database.getElencoProdotti()
+//        Database.loadOfferte {  }
 
         Database.loadProducts {
             println("HEIIIIIIIII------------------------")

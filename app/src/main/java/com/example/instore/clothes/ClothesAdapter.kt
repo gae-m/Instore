@@ -15,7 +15,7 @@ import com.example.instore.R
 import models.Product
 import kotlin.text.Typography.euro
 
-class ClothesAdapter(var productList: MutableList<Product>, var context: Context): RecyclerView.Adapter<ClothesAdapter.ItemHolder>(){
+class ClothesAdapter(val productList: MutableList<Product>, val context: Context): RecyclerView.Adapter<ClothesAdapter.ItemHolder>(){
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ItemHolder {
         val itemHolder = LayoutInflater.from(parent.context).inflate(R.layout.cell_grid_layout_dress, parent, false)
@@ -28,7 +28,7 @@ class ClothesAdapter(var productList: MutableList<Product>, var context: Context
 
     @SuppressLint("SetTextI18n")
     override fun onBindViewHolder(holder: ItemHolder, position: Int) {
-        var prodotto: Product = productList[position]
+        val prodotto: Product = productList[position]
 
         Glide.with(context).load(prodotto.img[0]).into(holder.tvImage)
         holder.tvNome.text = prodotto.nome

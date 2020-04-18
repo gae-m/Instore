@@ -10,6 +10,7 @@ import androidx.databinding.DataBindingUtil
 import androidx.navigation.NavController
 import androidx.navigation.fragment.findNavController
 import com.example.instore.databinding.FragmentHomeBinding
+import models.Database
 
 
 class HomeFragment : Fragment() {
@@ -22,14 +23,13 @@ class HomeFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        binding = DataBindingUtil.inflate(inflater,
-            R.layout.fragment_home,container,false)
+        binding = DataBindingUtil.inflate(inflater, R.layout.fragment_home,container,false)
         val imageOfferte = listOf<Int>(
             R.drawable.offerta4,
             R.drawable.offerta1,
             R.drawable.offerta2
         )
-        val adapter = OffertePagerAdapter(this.requireContext(), imageOfferte)
+        val adapter = ViewPagerAdapter(this.requireContext(),imageOfferte)
         binding.viewPager.adapter = adapter
         navController = findNavController()
 
