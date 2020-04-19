@@ -7,99 +7,203 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/constraintLayoutProdotto"
-            android:layout_width="match_parent"
+        <ScrollView
+            android:id="@+id/scrollView2"
+            android:layout_width="0dp"
             android:layout_height="0dp"
+            android:background="#13EDEDED"
             app:layout_constraintBottom_toTopOf="@+id/constraintLayoutAcquista"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="1.0">
-            <ScrollView
-                android:id="@+id/scrollView2"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent">
+            app:layout_constraintTop_toTopOf="parent">
 
-                <androidx.constraintlayout.widget.ConstraintLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <ImageView
+                    android:id="@+id/swipeRightImageView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="8dp"
+                    android:contentDescription="@string/swipe_right"
+                    app:layout_constraintBottom_toBottomOf="@+id/viewPagerProdotto"
+                    app:layout_constraintEnd_toEndOf="@+id/viewPagerProdotto"
+                    app:layout_constraintTop_toTopOf="@+id/viewPagerProdotto"
+                    app:srcCompat="@drawable/swipe_right" />
+
+                <ImageView
+                    android:id="@+id/swipeLeftImageView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:contentDescription="@string/swipe_left"
+                    app:layout_constraintBottom_toBottomOf="@+id/viewPagerProdotto"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/viewPagerProdotto"
+                    app:srcCompat="@drawable/swipe_left" />
+
+                <ImageView
+                    android:id="@+id/imageViewProdotto2"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_marginStart="32dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginEnd="8dp"
+                    android:contentDescription="@string/foto_dress_label"
+                    android:scaleType="centerCrop"
+                    app:layout_constraintDimensionRatio="h,5:6"
+                    app:layout_constraintEnd_toStartOf="@+id/imageViewProdotto1"
+                    app:layout_constraintHorizontal_bias="0.5"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/cardView"
+                    app:srcCompat="@drawable/common_google_signin_btn_icon_dark_normal" />
+
+                <ImageView
+                    android:id="@+id/imageViewProdotto3"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_marginStart="32dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="32dp"
+                    android:layout_marginBottom="16dp"
+                    android:contentDescription="@string/foto_dress_label"
+                    android:scaleType="centerCrop"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintDimensionRatio="h,5:6"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/imageViewProdotto2"
+                    app:srcCompat="@drawable/common_google_signin_btn_icon_dark_normal" />
+
+                <ImageView
+                    android:id="@+id/imageViewProdotto1"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginEnd="32dp"
+                    android:contentDescription="@string/foto_dress_label"
+                    android:scaleType="centerCrop"
+                    app:layout_constraintDimensionRatio="h,5:6"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.5"
+                    app:layout_constraintStart_toEndOf="@+id/imageViewProdotto2"
+                    app:layout_constraintTop_toBottomOf="@+id/cardView"
+                    app:srcCompat="@drawable/common_google_signin_btn_icon_dark_normal" />
 
                 <androidx.viewpager.widget.ViewPager
                     android:id="@+id/viewPagerProdotto"
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
-                    app:layout_constraintDimensionRatio="3:4"
+                    app:layout_constraintDimensionRatio="23:25"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
+                    app:layout_constraintTop_toTopOf="parent">
+
+                </androidx.viewpager.widget.ViewPager>
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/cardView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="32dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginEnd="32dp"
+                    app:cardCornerRadius="10dp"
+                    app:cardElevation="1dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/viewPagerProdotto">
 
                     <androidx.constraintlayout.widget.ConstraintLayout
-                        android:id="@+id/constraintLayout"
-                        android:layout_width="160dp"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="8dp"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintHorizontal_bias="0.501"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/viewPagerProdotto">
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+
+                        <TextView
+                            android:id="@+id/textCodPrefix"
+                            style="@style/StyleDark"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="16dp"
+                            android:layout_marginTop="16dp"
+                            android:layout_marginBottom="8dp"
+                            android:text="@string/cod_prefix"
+                            android:textSize="18sp"
+                            android:textStyle="bold"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/textDescrizione" />
 
                         <TextView
                             android:id="@+id/textNomeProdotto"
+                            style="@style/StyleDark"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:layout_marginStart="16dp"
+                            android:layout_marginTop="16dp"
                             android:text="@string/nome_label"
-                            android:textSize="18sp"
+                            android:textSize="24sp"
+                            android:textStyle="bold"
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toTopOf="parent" />
 
                         <TextView
-                            android:id="@+id/textPrezzoProdotto"
+                            android:id="@+id/textDescrizione"
+                            style="@style/StyleAccent"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="@string/prezzo_label"
-                            app:layout_constraintBaseline_toBaselineOf="@+id/textNomeProdotto"
-                            app:layout_constraintEnd_toEndOf="parent" />
+                            android:layout_marginStart="16dp"
+                            android:layout_marginTop="16dp"
+                            android:text="@string/descrizione_label"
+                            android:textAlignment="viewStart"
+                            android:textSize="18sp"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/textColorePrefix" />
+
+                        <TextView
+                            android:id="@+id/textCodice"
+                            style="@style/StyleAccent"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="16dp"
+                            android:textSize="18sp"
+                            app:layout_constraintBaseline_toBaselineOf="@+id/textCodPrefix"
+                            app:layout_constraintStart_toEndOf="@+id/textCodPrefix" />
 
                         <TextView
                             android:id="@+id/textColoreProdotto"
+                            style="@style/StyleAccent"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginTop="8dp"
+                            android:layout_marginStart="16dp"
                             android:text="@string/colore_label"
+                            android:textSize="18sp"
+                            app:layout_constraintBaseline_toBaselineOf="@+id/textColorePrefix"
+                            app:layout_constraintStart_toEndOf="@+id/textColorePrefix" />
+
+                        <TextView
+                            android:id="@+id/textColorePrefix"
+                            style="@style/StyleDark"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="16dp"
+                            android:layout_marginTop="16dp"
+                            android:text="@string/colore_prefix"
+                            android:textSize="18sp"
+                            android:textStyle="bold"
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toBottomOf="@+id/textNomeProdotto" />
                     </androidx.constraintlayout.widget.ConstraintLayout>
+                </androidx.cardview.widget.CardView>
 
-                    <TextView
-                        android:id="@+id/textDescrizione"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="32dp"
-                        android:layout_marginTop="32dp"
-                        android:layout_marginEnd="32dp"
-                        android:layout_marginBottom="8dp"
-                        android:text="@string/descrizione_label"
-                        android:textAlignment="viewStart"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintHorizontal_bias="0.51"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/constraintLayout"
-                        app:layout_constraintVertical_bias="1.0" />
-
-                </androidx.constraintlayout.widget.ConstraintLayout>
-            </ScrollView>
-
-        </androidx.constraintlayout.widget.ConstraintLayout>
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </ScrollView>
 
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/constraintLayoutAcquista"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:background="#13EDEDED"
             android:orientation="vertical"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -110,74 +214,88 @@
                 android:id="@+id/spinnerQuantita"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="16dp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toStartOf="@+id/buttonAggiungi"
+                android:layout_marginStart="50dp"
+                android:spinnerMode="dialog"
+                app:layout_constraintBottom_toBottomOf="@+id/textView5"
                 app:layout_constraintStart_toEndOf="@+id/textView5"
-                app:layout_constraintTop_toBottomOf="@+id/tagliaSpinner"
-                app:layout_constraintVertical_bias="1.0" />
+                app:layout_constraintTop_toTopOf="@+id/textView5" />
 
             <Spinner
                 android:id="@+id/tagliaSpinner"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                app:layout_constraintEnd_toStartOf="@+id/buttonAggiungi"
+                android:layout_marginStart="63dp"
+                app:layout_constraintBottom_toBottomOf="@+id/textView4"
                 app:layout_constraintStart_toEndOf="@+id/textView4"
-                app:layout_constraintTop_toBottomOf="@+id/textNome" />
+                app:layout_constraintTop_toTopOf="@+id/textView4" />
 
-            <Button
+            <ImageButton
                 android:id="@+id/buttonAggiungi"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_marginStart="24dp"
                 android:layout_marginTop="16dp"
                 android:layout_marginEnd="16dp"
                 android:layout_marginBottom="16dp"
+                android:background="@color/colorPrimaryDark"
                 android:clickable="true"
+                android:contentDescription="@string/aggiungi_button"
                 android:focusable="true"
-                android:src="@drawable/shoppingcart_icon"
+                android:scaleType="centerCrop"
+                android:src="@drawable/scrittacentro"
                 android:text="@string/aggiungi_label"
                 android:textSize="30sp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textColore"
+                app:layout_constraintStart_toEndOf="@+id/spinnerQuantita"
+                app:layout_constraintTop_toBottomOf="@+id/textPrezzo"
                 app:layout_editor_absoluteX="10dp" />
 
             <TextView
                 android:id="@+id/textNome"
+                style="@style/StyleDark"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
-                android:layout_marginTop="8dp"
+                android:layout_marginTop="16dp"
                 android:text="@string/nome_label"
+                android:textSize="20sp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
-                android:id="@+id/textColore"
+                android:id="@+id/textPrezzo"
+                style="@style/StyleDark"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="16dp"
-                android:text="@string/colore_label"
+                android:text="@string/prezzo_label"
+                android:textSize="18sp"
                 app:layout_constraintBaseline_toBaselineOf="@+id/textNome"
                 app:layout_constraintEnd_toEndOf="parent" />
 
             <TextView
                 android:id="@+id/textView4"
+                style="@style/StyleAccent"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="16dp"
                 android:text="@string/taglia_label"
+                android:textSize="18sp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/textNome" />
 
             <TextView
                 android:id="@+id/textView5"
+                style="@style/StyleAccent"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginBottom="8dp"
                 android:text="@string/quantita_label"
+                android:textSize="18sp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/textView4" />

@@ -19,7 +19,7 @@ class Product : Parcelable {
     @IgnoredOnParcel
     var categoria: String = ""
     @IgnoredOnParcel
-    var img = arrayOf("", "", "", "")
+    var img = arrayOf<String>()
     @IgnoredOnParcel
     var nuovi_arrivi: Boolean = false
     @IgnoredOnParcel

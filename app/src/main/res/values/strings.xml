@@ -26,4 +26,9 @@
     <string name="consulta">Consulta in nostro catalogo digitale.</string>
     <string name="grid_button">Grid Button</string>
     <string name="square_button">Square Button</string>
+    <string name="colore_prefix">Colore:</string>
+    <string name="cod_prefix">Cod:</string>
+    <string name="aggiungi_button">Aggiungi</string>
+    <string name="swipe_right">Swipe Right</string>
+    <string name="swipe_left">Swipe Left</string>
 </resources>

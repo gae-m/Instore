@@ -17,7 +17,7 @@ class ViewPagerAdapter(val context: Context, val imageResourceList: List<String>
     override fun instantiateItem(container: ViewGroup, position: Int): Any {
         val imageView = ImageView(context)
         Glide.with(context).load(imageResourceList[position]).into(imageView)
-        imageView.scaleType= ImageView.ScaleType.FIT_XY
+        imageView.scaleType= ImageView.ScaleType.FIT_CENTER
         container.addView(imageView)
         return imageView
     }

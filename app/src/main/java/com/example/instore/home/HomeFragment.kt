@@ -9,6 +9,7 @@ import com.example.instore.R
 import androidx.databinding.DataBindingUtil
 import androidx.navigation.NavController
 import androidx.navigation.fragment.findNavController
+import androidx.viewpager.widget.ViewPager
 import com.example.instore.databinding.FragmentHomeBinding
 import models.Database
 
@@ -24,6 +25,7 @@ class HomeFragment : Fragment() {
             R.layout.fragment_home,container,false)
         val adapter = ViewPagerAdapter(this.requireContext(),Database.offerteImg)
         binding.viewPager.adapter = adapter
+        binding.viewPager.addOnPageChangeListener(MyOnPageChangeListner(binding.swipeLeftImageView,binding.swipeRightImageView,Database.offerteImg.lastIndex))
         navController = findNavController()
 
         binding.apply {

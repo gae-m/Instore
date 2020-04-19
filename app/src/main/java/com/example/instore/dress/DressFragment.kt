@@ -8,6 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
+import android.widget.ImageView
 import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import com.bumptech.glide.Glide
@@ -16,7 +17,8 @@ import com.example.instore.databinding.FragmentDressBinding
 import kotlinx.android.synthetic.main.fragment_dress.*
 import models.Database
 import models.Product
-
+import java.lang.Integer.min
+import kotlin.text.Typography.euro
 
 
 class DressFragment : Fragment() {
@@ -49,15 +51,20 @@ class DressFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         arguments?.let {
+            var imageViewArray : Array<ImageView>
             product = it.getParcelable("prodotto")!!
             binding.apply {
                 textDescrizione.text = product.descrizione
                 textColoreProdotto.text = product.colore
                 textNomeProdotto.text = product.nome
-                textPrezzoProdotto.text = product.prezzo.toString()
-                textColore.text = product.colore
+                textPrezzo.text = product.prezzo.toString()+" "+euro
                 textNome.text = product.nome
+                textCodice.text = product.id
                 viewPagerProdotto.adapter = ProdottoPagerAdapter(requireContext(),product.img)
+                imageViewArray = arrayOf(imageViewProdotto1,imageViewProdotto2,imageViewProdotto3)
+            }
+            for (i in 0..kotlin.math.min(product.img.size,imageViewArray.size) -1){
+                Glide.with(requireContext()).load(product.img[i]).into(imageViewArray[i])
             }
 
 

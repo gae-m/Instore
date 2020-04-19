@@ -14,6 +14,29 @@
             android:focusable="true"
             android:focusableInTouchMode="true">
 
+            <ImageView
+                android:id="@+id/swipeRightImageView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
+                android:contentDescription="@string/swipe_right"
+                app:layout_constraintBottom_toBottomOf="@+id/viewPager"
+                app:layout_constraintEnd_toEndOf="@+id/viewPager"
+                app:layout_constraintTop_toTopOf="@+id/viewPager"
+                app:srcCompat="@drawable/swipe_right" />
+
+            <ImageView
+                android:id="@+id/swipeLeftImageView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:contentDescription="@string/swipe_left"
+                android:visibility="invisible"
+                app:layout_constraintBottom_toBottomOf="@+id/viewPager"
+                app:layout_constraintStart_toStartOf="@+id/viewPager"
+                app:layout_constraintTop_toTopOf="@+id/viewPager"
+                app:srcCompat="@drawable/swipe_left" />
+
             <androidx.viewpager.widget.ViewPager
                 android:id="@+id/viewPager"
                 android:layout_width="0dp"
@@ -23,7 +46,9 @@
                 app:layout_constraintDimensionRatio="0.8"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textView2" />
+                app:layout_constraintTop_toBottomOf="@+id/textView2">
+
+            </androidx.viewpager.widget.ViewPager>
 
             <TextView
                 android:id="@+id/textView"
@@ -65,7 +90,6 @@
                     style="@style/StyleDark"
                     android:layout_width="match_parent"
                     android:layout_height="80dp"
-                    android:layout_marginTop="16dp"
                     android:gravity="center"
                     android:text="@string/uomo"
                     android:textAlignment="center"
@@ -73,11 +97,11 @@
                     android:visibility="visible" />
 
                 <View
-                    android:id="@+id/divider"
+                    android:id="@+id/divider2"
                     android:layout_width="match_parent"
-                    android:layout_height="0.1dp"
-                    android:layout_marginLeft="48dp"
-                    android:layout_marginRight="48dp"
+                    android:layout_height="1dp"
+                    android:layout_marginLeft="24dp"
+                    android:layout_marginRight="24dp"
                     android:background="@color/colorPrimary" />
 
                 <TextView
@@ -91,6 +115,14 @@
                     android:textSize="36sp"
                     android:visibility="visible" />
 
+                <View
+                    android:id="@+id/divider3"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginLeft="24dp"
+                    android:layout_marginRight="24dp"
+                    android:background="@color/colorPrimary" />
+
                 <TextView
                     android:id="@+id/bambino_textView"
                     style="@style/StyleDark"
@@ -101,6 +133,14 @@
                     android:textAlignment="gravity"
                     android:textSize="36sp"
                     android:visibility="visible" />
+
+                <View
+                    android:id="@+id/divider4"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginLeft="24dp"
+                    android:layout_marginRight="24dp"
+                    android:background="@color/colorPrimary" />
 
                 <TextView
                     android:id="@+id/bambina_textView"
