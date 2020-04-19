@@ -19,7 +19,8 @@ object Database {
 
     fun getElencoProdotti(completion: (List<Product>) -> Unit) {
         val docRef = db.collection("negozi").document("00001").collection("prodotti")
-            .get()
+
+        docRef.get()
             .addOnSuccessListener { result ->
                 for (document in result) {
 

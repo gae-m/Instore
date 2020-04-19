@@ -12,8 +12,6 @@ import androidx.appcompat.widget.SearchView
 import models.Database
 import androidx.databinding.DataBindingUtil
 import androidx.drawerlayout.widget.DrawerLayout
-import androidx.fragment.app.Fragment
-import androidx.fragment.app.findFragment
 import androidx.navigation.*
 import androidx.navigation.ui.*
 import com.example.instore.databinding.ActivityMainBinding

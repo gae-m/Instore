@@ -11,8 +11,6 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.instore.R
 import com.example.instore.databinding.FragmentCartBinding
-import com.example.instore.databinding.FragmentClothesBinding
-import kotlinx.android.synthetic.main.fragment_cart.*
 import models.Database
 
 class CartFragment : Fragment() {
