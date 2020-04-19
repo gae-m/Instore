@@ -29,7 +29,6 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
 
         Database.loadProducts {
-
         }
 
         binding = DataBindingUtil.setContentView<ActivityMainBinding>(this,R.layout.activity_main)
@@ -51,7 +50,7 @@ class MainActivity : AppCompatActivity() {
                 val searchItem = menu?.findItem(R.id.searchItem)
                 (searchItem?.actionView as SearchView).apply {
                     setOnQueryTextListener(QueryListener(searchItem,navController))
-                    setOnQueryTextFocusChangeListener { v, hasFocus ->
+                    setOnQueryTextFocusChangeListener { _, hasFocus ->
                         if(hasFocus) binding.searchBackground.visibility = View.VISIBLE
                         else{
                             searchItem.collapseActionView()

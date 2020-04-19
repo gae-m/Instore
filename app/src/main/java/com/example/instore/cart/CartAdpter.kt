@@ -9,9 +9,7 @@ import android.widget.*
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.instore.R
-import kotlinx.android.synthetic.main.fragment_dress.*
 import kotlinx.android.synthetic.main.riga_cart.view.*
-import models.OnceProduct
 import kotlin.text.Typography.euro
 
 class CartAdpter(val cartList: MutableList<MutableMap<String, Any?>>, val context: Context) : RecyclerView.Adapter<ItemHolder>() {

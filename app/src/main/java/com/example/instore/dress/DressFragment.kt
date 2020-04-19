@@ -8,23 +8,20 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
-import android.widget.Spinner
 import android.widget.Toast
-import androidx.navigation.fragment.findNavController
+import androidx.databinding.DataBindingUtil
 import com.bumptech.glide.Glide
 import com.example.instore.R
+import com.example.instore.databinding.FragmentDressBinding
 import kotlinx.android.synthetic.main.fragment_dress.*
-import kotlinx.coroutines.delay
 import models.Database
 import models.Product
 
-/**
- * A simple [Fragment] subclass.
- */
 
 
 class DressFragment : Fragment() {
 
+    lateinit var binding: FragmentDressBinding
     var product: Product? = null
     var quantita_selz: Int = 1
     var isFind: Boolean = false
@@ -33,13 +30,16 @@ class DressFragment : Fragment() {
     lateinit var taglia: String
     var tagliaArray = arrayListOf<String>()
 
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
         requireActivity().invalidateOptionsMenu()
-        return inflater.inflate(R.layout.fragment_dress, container, false)
+        binding = DataBindingUtil.inflate(inflater,R.layout.fragment_dress,container,false)
+        return binding.root
+
+
     }
 
     override fun onStop() {
@@ -56,13 +56,13 @@ class DressFragment : Fragment() {
             product = prodotto
             prodotto?.let {
 
-                textDescrizione.text = prodotto.descrizione
-                textColoreProdotto.text = prodotto.colore
-                textNomeProdotto.text = prodotto.nome
-                textPrezzoProdotto.text = prodotto.prezzo.toString()
-                Glide.with(this).load(prodotto.img[0]).into(imageView2)
-                textColore.text = prodotto.colore
-                textNome.text = prodotto.nome
+                binding.textDescrizione.text = prodotto.descrizione
+                binding.textColoreProdotto.text = prodotto.colore
+                binding.textNomeProdotto.text = prodotto.nome
+                binding.textPrezzoProdotto.text = prodotto.prezzo.toString()
+                Glide.with(this).load(prodotto.img[0]).into(binding.imageView2)
+                binding.textColore.text = prodotto.colore
+                binding.textNome.text = prodotto.nome
 
                 arrayOf("XS","S","M","L","XL").forEach {
 
@@ -73,9 +73,9 @@ class DressFragment : Fragment() {
 
                 //TAGLIA SPINNER
                 val tagliaAdapter = ArrayAdapter(requireContext(), android.R.layout.simple_spinner_item, tagliaArray)
-                tagliaSpinner.adapter = tagliaAdapter
+                binding.tagliaSpinner.adapter = tagliaAdapter
 
-                tagliaSpinner.onItemSelectedListener = object: AdapterView.OnItemSelectedListener{
+                binding.tagliaSpinner.onItemSelectedListener = object: AdapterView.OnItemSelectedListener{
                     override fun onNothingSelected(parent: AdapterView<*>?) {
                         Toast.makeText(requireContext(), "Prodotto esaurito", Toast.LENGTH_SHORT).show()
                     }
@@ -85,11 +85,11 @@ class DressFragment : Fragment() {
                     }
                 }
 
-                //TAGLIA SPINNER
-                val quantAdapter = ArrayAdapter(context, android.R.layout.simple_spinner_item, arrayOf(1,2,3,4,5))
-                spinnerQuantita.adapter = quantAdapter
+                //QUANTITA SPINNER
+                val quantAdapter = ArrayAdapter(requireContext(), android.R.layout.simple_spinner_item, arrayOf(1,2,3,4,5))
+                binding.spinnerQuantita.adapter = quantAdapter
 
-                spinnerQuantita.onItemSelectedListener = object: AdapterView.OnItemSelectedListener{
+                binding.spinnerQuantita.onItemSelectedListener = object: AdapterView.OnItemSelectedListener{
                     override fun onNothingSelected(parent: AdapterView<*>?) {
                     }
                     override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
@@ -103,7 +103,7 @@ class DressFragment : Fragment() {
         }
 
 
-        buttonAggiungi.setOnClickListener {
+        binding.buttonAggiungi.setOnClickListener {
 
             Database.productsArray.forEach {
                 if(it.id == product?.id) {
@@ -116,7 +116,7 @@ class DressFragment : Fragment() {
 
             if (isAble) {
                 if (Database.cart.isEmpty()) {
-                    product.let { p ->
+                    product.let {
                         var map = mutableMapOf<String, Any?>(
                             "id" to product?.id,
                             "taglia" to taglia,
@@ -126,7 +126,6 @@ class DressFragment : Fragment() {
                             "nome" to product?.nome,
                             "prezzo" to product?.prezzo
                         )
-                        println("ISEMPTY-------------------")
                         Database.cart.add(map)
                         Toast.makeText(
                             requireContext(),
@@ -138,7 +137,6 @@ class DressFragment : Fragment() {
                     Database.cart.forEach { e ->
 
                         if (e["id"] == product?.id && e["taglia"] == taglia) {
-                            println("IDTROVATOOO-----------------------")
                             isFind = true
                             Toast.makeText(
                                 requireContext(),
@@ -150,7 +148,7 @@ class DressFragment : Fragment() {
                     }
 
                     if (isFind != true) {
-                        product.let { p ->
+                        product.let {
                             var map = mutableMapOf<String, Any?>(
                                 "id" to product?.id,
                                 "taglia" to taglia,
@@ -180,6 +178,5 @@ class DressFragment : Fragment() {
                 builder.show()
             }
         }
-        //Database.cartArray.add(prodottoCart)
     }
 }

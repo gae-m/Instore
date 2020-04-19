@@ -1,12 +1,10 @@
 package com.example.instore.home
 
 import android.content.Context
-import android.net.Uri
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import androidx.viewpager.widget.PagerAdapter
-import androidx.viewpager.widget.ViewPager
 
 class OffertePagerAdapter(val context: Context,val imageResourceList: List<Int>): PagerAdapter() {
     override fun isViewFromObject(view: View, `object`: Any): Boolean {

@@ -17,11 +17,8 @@ class HomeFragment : Fragment() {
     private lateinit var navController: NavController
 
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        // Inflate the layout for this fragment
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+
         binding = DataBindingUtil.inflate(inflater,
             R.layout.fragment_home,container,false)
         val imageOfferte = listOf<Int>(

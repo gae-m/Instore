@@ -9,7 +9,6 @@ import com.example.instore.R
 import com.example.instore.databinding.FragmentClothesBinding
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
-import kotlinx.android.synthetic.main.fragment_clothes.*
 import models.Database
 import models.Product
 
@@ -42,12 +41,12 @@ class ClothesFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        buttonSpanCount2.setOnClickListener {
+        binding.buttonSpanCount2.setOnClickListener {
             spanCount = 2
             getFragmentManager()?.beginTransaction()?.detach(this)?.attach(this)?.commit()
         }
 
-        buttonSpanCount1.setOnClickListener {
+        binding.buttonSpanCount1.setOnClickListener {
             spanCount = 1
             getFragmentManager()?.beginTransaction()?.detach(this)?.attach(this)?.commit()
         }
