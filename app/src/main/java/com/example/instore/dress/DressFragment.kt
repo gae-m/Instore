@@ -23,12 +23,12 @@ class DressFragment : Fragment() {
 
     private lateinit var binding: FragmentDressBinding
     private lateinit var product: Product
-    var quantita_selz: Int = 1
-    var isFind: Boolean = false
-    var isAble: Boolean = false
-    var quant_disp: Int = 0
-    lateinit var taglia: String
-    var tagliaArray = arrayListOf<String>()
+    private var quantita_selz: Int = 1
+    private var isFind: Boolean = false
+    private var isAble: Boolean = false
+    private var quant_disp: Int = 0
+    private lateinit var taglia: String
+    private var tagliaArray = arrayListOf<String>()
 
 
     override fun onCreateView(
@@ -38,12 +38,10 @@ class DressFragment : Fragment() {
         requireActivity().invalidateOptionsMenu()
         binding = DataBindingUtil.inflate(inflater,R.layout.fragment_dress,container,false)
         return binding.root
-
-
     }
 
     override fun onStop() {
-        tagliaArray = arrayListOf<String>()
+        tagliaArray.clear()
         super.onStop()
     }
 
@@ -51,21 +49,22 @@ class DressFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         arguments?.let {
-            val prodotto: Product? = it.getParcelable("prodotto")
-            product = prodotto
-            prodotto?.let {
+            product = it.getParcelable("prodotto")!!
+            binding.apply {
+                textDescrizione.text = product.descrizione
+                textColoreProdotto.text = product.colore
+                textNomeProdotto.text = product.nome
+                textPrezzoProdotto.text = product.prezzo.toString()
+                textColore.text = product.colore
+                textNome.text = product.nome
+                viewPagerProdotto.adapter = ProdottoPagerAdapter(requireContext(),product.img)
+            }
 
-                binding.textDescrizione.text = prodotto.descrizione
-                binding.textColoreProdotto.text = prodotto.colore
-                binding.textNomeProdotto.text = prodotto.nome
-                binding.textPrezzoProdotto.text = prodotto.prezzo.toString()
-                Glide.with(this).load(prodotto.img[0]).into(binding.imageView2)
-                binding.textColore.text = prodotto.colore
-                binding.textNome.text = prodotto.nome
+
 
                 arrayOf("XS","S","M","L","XL").forEach {
 
-                    if(prodotto.quantita_disp[it] != 0){
+                    if(product.quantita_disp[it] != 0){
                         tagliaArray.add(it)
                     }
                 }
@@ -97,14 +96,12 @@ class DressFragment : Fragment() {
                     }
 
                 }
-
-            }
         }
 
         binding.buttonAggiungi.setOnClickListener {
 
             Database.productsArray.forEach {
-                if(it.id == product?.id) {
+                if(it.id == product.id) {
                     quant_disp = it.quantita_disp.get(taglia) as Int
                     if (quantita_selz <= it.quantita_disp.get(taglia) as Int) {
                         isAble = true
@@ -115,14 +112,14 @@ class DressFragment : Fragment() {
             if (isAble) {
                 if (Database.cart.isEmpty()) {
                     product.let {
-                        var map = mutableMapOf<String, Any?>(
-                            "id" to product?.id,
+                        val map = mutableMapOf<String, Any?>(
+                            "id" to product.id,
                             "taglia" to taglia,
                             "quantita_selz" to quantita_selz,
-                            "quantita_disp" to (product?.quantita_disp?.get(taglia)),
-                            "imgUrl" to product?.img?.get(0),
-                            "nome" to product?.nome,
-                            "prezzo" to product?.prezzo
+                            "quantita_disp" to (product.quantita_disp.get(taglia)),
+                            "imgUrl" to product.img.get(0),
+                            "nome" to product.nome,
+                            "prezzo" to product.prezzo
                         )
                         Database.cart.add(map)
                         Toast.makeText(
@@ -134,7 +131,7 @@ class DressFragment : Fragment() {
                 } else {
                     Database.cart.forEach { e ->
 
-                        if (e["id"] == product?.id && e["taglia"] == taglia) {
+                        if (e["id"] == product.id && e["taglia"] == taglia) {
                             isFind = true
                             Toast.makeText(
                                 requireContext(),
@@ -147,14 +144,14 @@ class DressFragment : Fragment() {
 
                     if (isFind != true) {
                         product.let {
-                            var map = mutableMapOf<String, Any?>(
-                                "id" to product?.id,
+                            val map = mutableMapOf<String, Any?>(
+                                "id" to product.id,
                                 "taglia" to taglia,
                                 "quantita_selz" to quantita_selz,
-                                "quantita_disp" to (product?.quantita_disp?.get(taglia)),
-                                "imgUrl" to product?.img?.get(0),
-                                "nome" to product?.nome,
-                                "prezzo" to product?.prezzo
+                                "quantita_disp" to (product.quantita_disp.get(taglia)),
+                                "imgUrl" to product.img.get(0),
+                                "nome" to product.nome,
+                                "prezzo" to product.prezzo
                             )
 
                             Database.cart.add(map)
@@ -170,7 +167,7 @@ class DressFragment : Fragment() {
             }else {
                 val builder = AlertDialog.Builder(requireContext())
                 builder.setTitle("InStore")
-                builder.setMessage("Quantità selezionata non disponibile.\n Disponibilità :   ${quant_disp.toString()}")
+                builder.setMessage("Quantità selezionata non disponibile.\n Disponibilità :   $quant_disp")
                 builder.setPositiveButton("OK") { _, _ ->
                 }
                 builder.show()

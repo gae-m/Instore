@@ -16,12 +16,11 @@ class SplashScreenActivity : AppCompatActivity() {
         window.setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN)
         setContentView(R.layout.splash_screen_activity_layout)
 
-        Database.getElencoProdotti {
+        Database.loadOfferte {
             Handler().postDelayed({
                 startActivity(Intent(this@SplashScreenActivity, MainActivity::class.java))
                 finish()
-            },4000)
-
+            }, 4000)
         }
     }
 
