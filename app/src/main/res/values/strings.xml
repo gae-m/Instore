@@ -22,4 +22,8 @@
     <string name="quantita_label">Quantita</string>
     <string name="filtri">Filtri</string>
     <string name="mostra_risultati">Mostra Risultati</string>
+    <string name="benvenuto">Benvenuto su InStore</string>
+    <string name="consulta">Consulta in nostro catalogo digitale.</string>
+    <string name="grid_button">Grid Button</string>
+    <string name="square_button">Square Button</string>
 </resources>

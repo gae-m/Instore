@@ -2,133 +2,123 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
-
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@color/colorBackground"
-        android:clickable="true"
-        android:focusable="true"
-        android:focusableInTouchMode="true">
+        android:layout_height="match_parent">
 
-        <ImageView
-            android:id="@+id/bambino_imageView"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:layout_marginEnd="@dimen/home_button_margin"
-            android:layout_marginBottom="@dimen/home_button_margin"
-            android:alpha="1"
-            android:contentDescription="@string/bambino"
-            android:scaleType="fitXY"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toEndOf="@+id/bambinaImageView"
-            app:layout_constraintTop_toBottomOf="@+id/donna_imageView"
-            app:srcCompat="@drawable/bambino" />
-
-        <ImageView
-            android:id="@+id/bambinaImageView"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:layout_marginStart="@dimen/home_button_margin"
-            android:layout_marginEnd="@dimen/home_button_margin"
-            android:layout_marginBottom="@dimen/home_button_margin"
-            android:alpha="1"
-            android:contentDescription="@string/bambina_label"
-            android:scaleType="fitXY"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/bambino_imageView"
-            app:layout_constraintHorizontal_bias="0.6"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/uomoImageView"
-            app:srcCompat="@drawable/bambina" />
-
-        <ImageView
-            android:id="@+id/donna_imageView"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:layout_marginTop="@dimen/home_button_margin"
-            android:layout_marginEnd="@dimen/home_button_margin"
-            android:layout_marginBottom="@dimen/home_button_margin"
-            android:alpha="1"
-            android:contentDescription="@string/donna"
-            android:scaleType="fitXY"
-            app:layout_constraintBottom_toTopOf="@+id/bambino_imageView"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toEndOf="@+id/uomoImageView"
-            app:layout_constraintTop_toBottomOf="@+id/viewPager"
-            app:srcCompat="@drawable/donna" />
-
-        <androidx.viewpager.widget.ViewPager
-            android:id="@+id/viewPager"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:orientation="horizontal"
-            app:layout_constraintDimensionRatio="16:9"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <ImageView
-            android:id="@+id/uomoImageView"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:layout_marginStart="@dimen/home_button_margin"
-            android:layout_marginTop="@dimen/home_button_margin"
-            android:layout_marginEnd="@dimen/home_button_margin"
-            android:layout_marginBottom="@dimen/home_button_margin"
-            android:alpha="1"
-            android:contentDescription="@string/uomo"
-            android:scaleType="fitXY"
-            app:layout_constraintBottom_toTopOf="@+id/bambinaImageView"
-            app:layout_constraintEnd_toStartOf="@+id/donna_imageView"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/viewPager"
-            app:srcCompat="@drawable/uomo" />
-
-        <TextView
-            android:id="@+id/uomo_textView"
-            style="@style/home_label"
-            android:layout_width="wrap_content"
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/uomo"
-            android:visibility="gone"
-            app:layout_constraintBottom_toBottomOf="@+id/uomoImageView"
-            app:layout_constraintStart_toStartOf="@+id/uomoImageView" />
+            android:background="@color/colorBackground"
+            android:clickable="true"
+            android:focusable="true"
+            android:focusableInTouchMode="true">
 
-        <TextView
-            android:id="@+id/donna_textView"
-            style="@style/home_label"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/donna"
-            android:visibility="gone"
-            app:layout_constraintBottom_toBottomOf="@+id/donna_imageView"
-            app:layout_constraintStart_toStartOf="@+id/donna_imageView" />
+            <androidx.viewpager.widget.ViewPager
+                android:id="@+id/viewPager"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_marginTop="24dp"
+                android:orientation="horizontal"
+                app:layout_constraintDimensionRatio="0.8"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textView2" />
 
-        <TextView
-            android:id="@+id/bambina_textView"
-            style="@style/home_label"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/bambina_label"
-            android:visibility="gone"
-            app:layout_constraintBottom_toBottomOf="@+id/bambinaImageView"
-            app:layout_constraintStart_toStartOf="@+id/bambinaImageView" />
+            <TextView
+                android:id="@+id/textView"
+                style="@style/StyleDark"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:text="@string/benvenuto"
+                android:textSize="38sp"
+                android:textStyle="bold"
+                android:visibility="visible"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
-        <TextView
-            android:id="@+id/bambino_textView"
-            style="@style/home_label"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/bambino"
-            android:visibility="gone"
-            app:layout_constraintBottom_toBottomOf="@+id/bambino_imageView"
-            app:layout_constraintStart_toStartOf="@+id/bambino_imageView" />
+            <TextView
+                android:id="@+id/textView2"
+                style="@style/StyleAccent"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/consulta"
+                android:textSize="22sp"
+                android:textStyle="bold"
+                android:visibility="visible"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textView" />
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/viewPager">
+
+                <TextView
+                    android:id="@+id/uomo_textView"
+                    style="@style/StyleDark"
+                    android:layout_width="match_parent"
+                    android:layout_height="80dp"
+                    android:layout_marginTop="16dp"
+                    android:gravity="center"
+                    android:text="@string/uomo"
+                    android:textAlignment="center"
+                    android:textSize="36sp"
+                    android:visibility="visible" />
+
+                <View
+                    android:id="@+id/divider"
+                    android:layout_width="match_parent"
+                    android:layout_height="0.1dp"
+                    android:layout_marginLeft="48dp"
+                    android:layout_marginRight="48dp"
+                    android:background="@color/colorPrimary" />
+
+                <TextView
+                    android:id="@+id/donna_textView"
+                    style="@style/StyleDark"
+                    android:layout_width="match_parent"
+                    android:layout_height="80dp"
+                    android:gravity="center"
+                    android:text="@string/donna"
+                    android:textAlignment="center"
+                    android:textSize="36sp"
+                    android:visibility="visible" />
+
+                <TextView
+                    android:id="@+id/bambino_textView"
+                    style="@style/StyleDark"
+                    android:layout_width="match_parent"
+                    android:layout_height="80dp"
+                    android:gravity="center"
+                    android:text="@string/bambino"
+                    android:textAlignment="gravity"
+                    android:textSize="36sp"
+                    android:visibility="visible" />
+
+                <TextView
+                    android:id="@+id/bambina_textView"
+                    style="@style/StyleDark"
+                    android:layout_width="match_parent"
+                    android:layout_height="80dp"
+                    android:layout_marginBottom="16dp"
+                    android:gravity="center"
+                    android:text="@string/bambina_label"
+                    android:textAlignment="center"
+                    android:textSize="36sp"
+                    android:visibility="visible" />
+
+            </LinearLayout>
 
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
+
+
 </layout>

@@ -27,16 +27,16 @@ class HomeFragment : Fragment() {
         navController = findNavController()
 
         binding.apply {
-            uomoImageView.setOnClickListener {
+            uomoTextView.setOnClickListener {
                 goToClothes("Uomo")
             }
-            donnaImageView.setOnClickListener {
+            donnaTextView.setOnClickListener {
                 goToClothes("Donna")
             }
-            bambinoImageView.setOnClickListener {
+            bambinoTextView.setOnClickListener {
                 goToClothes("Bambino")
             }
-            bambinaImageView.setOnClickListener {
+            bambinaTextView.setOnClickListener {
                 goToClothes("Bambina")
             }
         }
