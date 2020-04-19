@@ -5,6 +5,7 @@ import android.view.*
 import androidx.fragment.app.Fragment
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
+import androidx.navigation.fragment.findNavController
 import com.example.instore.R
 import com.example.instore.databinding.FragmentClothesBinding
 import androidx.recyclerview.widget.GridLayoutManager
@@ -41,6 +42,10 @@ class ClothesFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+//        binding.filtroButton.setOnClickListener{
+//            findNavController().navigate(ClothesFragmentDirections.actionClothesFragmentToFiltroFragment())
+//        }
 
         buttonSpanCount2.setOnClickListener {
             spanCount = 2
