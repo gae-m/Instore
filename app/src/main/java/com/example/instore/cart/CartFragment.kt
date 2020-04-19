@@ -35,8 +35,9 @@ class CartFragment : Fragment() {
                     if (cart["id"] == it.id) {
                         Database.venduto(
                             it.id,
-                            it.quantita_disp["S"].toString(),
-                            cart["quantita_selz"].toString()
+                            it.quantita_disp.get(cart.get("taglia")) as Int,
+                            cart.get("quantita_selz") as Int,
+                            cart["taglia"].toString()
                         )
                     }
                 }
@@ -47,18 +48,18 @@ class CartFragment : Fragment() {
             if (Database.cart.isNotEmpty()) {
 
                 builder.setMessage("Grazie per il tuo acquisto.")
+                builder.setPositiveButton("OK") { _, _ ->
+                    findNavController().popBackStack()
+
+                }
+                builder.show()
 
             } else{
 
                 builder.setMessage("Carrello vuoto. Ritorna agli acquisti.")
+                builder.show()
 
             }
-            builder.setPositiveButton("OK") { _, _ ->
-
-                findNavController().popBackStack()
-
-            }
-            builder.show()
 
             Database.cart = mutableListOf<MutableMap<String, Any?>>()
             adapter.notifyDataSetChanged()

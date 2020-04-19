@@ -12,5 +12,13 @@
     <string name="cart_label">Carrello</string>
     <string name="search">Search</string>
     <string name="bambina_label">Bambina</string>
+    <string name="taglia_label">Taglia</string>
+    <string name="nome_label">Nome</string>
+    <string name="foto_dress_label">Foto</string>
+    <string name="prezzo_label">Prezzo</string>
+    <string name="colore_label">Colore</string>
+    <string name="descrizione_label">Descrizione</string>
+    <string name="aggiungi_label">AGGIUNGI</string>
+    <string name="quantita_label">Quantita</string>
 
 </resources>

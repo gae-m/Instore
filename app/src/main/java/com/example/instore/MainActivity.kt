@@ -15,11 +15,8 @@ import androidx.drawerlayout.widget.DrawerLayout
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.findFragment
 import androidx.navigation.*
-import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.*
-import com.example.instore.cart.CartFragment
 import com.example.instore.databinding.ActivityMainBinding
-import kotlinx.android.synthetic.main.activity_main.*
 
 
 class MainActivity : AppCompatActivity() {
@@ -31,11 +28,8 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        //Database.getElencoProdotti()
-
         Database.loadProducts {
-            println("HEIIIIIIIII------------------------")
-            println(it)
+
         }
 
         binding = DataBindingUtil.setContentView<ActivityMainBinding>(this,R.layout.activity_main)
