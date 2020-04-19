@@ -8,7 +8,7 @@
     <string name="nuovi_arrivi_menu">Nuovi Arrivi</string>
     <string name="home_label">Home</string>
     <string name="clothes_label">Catalogo</string>
-    <string name="dress_label" >\t</string>
+    <string name="dress_label">\t</string>
     <string name="cart_label">Carrello</string>
     <string name="search">Search</string>
     <string name="bambina_label">Bambina</string>
@@ -20,5 +20,6 @@
     <string name="descrizione_label">Descrizione</string>
     <string name="aggiungi_label">AGGIUNGI</string>
     <string name="quantita_label">Quantita</string>
-
+    <string name="filtri">Filtri</string>
+    <string name="mostra_risultati">Mostra Risultati</string>
 </resources>

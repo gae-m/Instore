@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="criteri_di_filtro">
+        <item>Categoria</item>
+        <item>Colore</item>
+        <item>Taglia</item>
+        <item>Prezzo</item>
+    </string-array>
+</resources>

@@ -15,6 +15,8 @@ import androidx.drawerlayout.widget.DrawerLayout
 import androidx.navigation.*
 import androidx.navigation.ui.*
 import com.example.instore.databinding.ActivityMainBinding
+import com.example.instore.home.HomeFragment
+import kotlinx.android.synthetic.main.activity_main.*
 
 
 class MainActivity : AppCompatActivity() {

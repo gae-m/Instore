@@ -26,7 +26,7 @@ class HomeFragment : Fragment() {
             R.drawable.offerta1,
             R.drawable.offerta2
         )
-        val adapter = OffertePagerAdapter(this.requireContext(), imageOfferte)
+        val adapter = ViewPagerAdapter(this.requireContext(),imageOfferte)
         binding.viewPager.adapter = adapter
         navController = findNavController()
 

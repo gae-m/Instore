@@ -11,6 +11,7 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.instore.R
 import com.example.instore.databinding.FragmentCartBinding
+import kotlinx.android.synthetic.main.fragment_cart.*
 import models.Database
 
 class CartFragment : Fragment() {
@@ -67,7 +68,7 @@ class CartFragment : Fragment() {
 
             }
 
-            Database.cart = mutableListOf<MutableMap<String, Any?>>()
+            Database.cart.clear()
             adapter.notifyDataSetChanged()
 
         }

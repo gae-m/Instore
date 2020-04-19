@@ -21,8 +21,8 @@ import models.Product
 
 class DressFragment : Fragment() {
 
-    lateinit var binding: FragmentDressBinding
-    var product: Product? = null
+    private lateinit var binding: FragmentDressBinding
+    private lateinit var product: Product
     var quantita_selz: Int = 1
     var isFind: Boolean = false
     var isAble: Boolean = false
@@ -49,7 +49,6 @@ class DressFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
 
         arguments?.let {
             val prodotto: Product? = it.getParcelable("prodotto")
@@ -101,7 +100,6 @@ class DressFragment : Fragment() {
 
             }
         }
-
 
         binding.buttonAggiungi.setOnClickListener {
 

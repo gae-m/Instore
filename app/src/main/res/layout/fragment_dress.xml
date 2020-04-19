@@ -28,21 +28,13 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
 
-                    <androidx.viewpager.widget.ViewPager
-                        android:id="@+id/viewPagerProdotto"
-                        android:layout_width="match_parent"
-                        android:layout_height="0dp"
-                        app:layout_constraintDimensionRatio="0.8"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent">
-
-                        <ImageView
-                            android:id="@+id/imageView2"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:contentDescription="@string/foto_dress_label"
-                            android:src="@drawable/common_google_signin_btn_icon_dark_normal_background" />
-                    </androidx.viewpager.widget.ViewPager>
+                <androidx.viewpager.widget.ViewPager
+                    android:id="@+id/viewPagerProdotto"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    app:layout_constraintDimensionRatio="3:4"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
 
                     <androidx.constraintlayout.widget.ConstraintLayout
                         android:id="@+id/constraintLayout"
