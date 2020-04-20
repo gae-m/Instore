@@ -31,4 +31,7 @@
     <string name="aggiungi_button">Aggiungi</string>
     <string name="swipe_right">Swipe Right</string>
     <string name="swipe_left">Swipe Left</string>
+    <string name="acquista">Acquista</string>
+    <string name="tot">Totale:</string>
+    <string name="carrello_vuoto">Il tuo carrello è vuoto.</string>
 </resources>

@@ -11,7 +11,7 @@
             android:id="@+id/scrollView2"
             android:layout_width="0dp"
             android:layout_height="0dp"
-            android:background="#13EDEDED"
+            android:background="@color/colorBackground"
             app:layout_constraintBottom_toTopOf="@+id/constraintLayoutAcquista"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -38,6 +38,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="8dp"
                     android:contentDescription="@string/swipe_left"
+                    android:visibility="invisible"
                     app:layout_constraintBottom_toBottomOf="@+id/viewPagerProdotto"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="@+id/viewPagerProdotto"
@@ -52,15 +53,15 @@
                     android:layout_marginEnd="8dp"
                     android:contentDescription="@string/foto_dress_label"
                     android:scaleType="centerCrop"
-                    app:layout_constraintDimensionRatio="h,5:6"
-                    app:layout_constraintEnd_toStartOf="@+id/imageViewProdotto1"
+                    app:layout_constraintDimensionRatio="h,2:3"
+                    app:layout_constraintEnd_toStartOf="@+id/imageViewProdotto3"
                     app:layout_constraintHorizontal_bias="0.5"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/cardView"
                     app:srcCompat="@drawable/common_google_signin_btn_icon_dark_normal" />
 
                 <ImageView
-                    android:id="@+id/imageViewProdotto3"
+                    android:id="@+id/imageViewProdotto1"
                     android:layout_width="0dp"
                     android:layout_height="0dp"
                     android:layout_marginStart="32dp"
@@ -77,14 +78,14 @@
                     app:srcCompat="@drawable/common_google_signin_btn_icon_dark_normal" />
 
                 <ImageView
-                    android:id="@+id/imageViewProdotto1"
+                    android:id="@+id/imageViewProdotto3"
                     android:layout_width="0dp"
                     android:layout_height="0dp"
                     android:layout_marginTop="16dp"
                     android:layout_marginEnd="32dp"
                     android:contentDescription="@string/foto_dress_label"
                     android:scaleType="centerCrop"
-                    app:layout_constraintDimensionRatio="h,5:6"
+                    app:layout_constraintDimensionRatio="h,2:3"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.5"
                     app:layout_constraintStart_toEndOf="@+id/imageViewProdotto2"
@@ -95,7 +96,7 @@
                     android:id="@+id/viewPagerProdotto"
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
-                    app:layout_constraintDimensionRatio="23:25"
+                    app:layout_constraintDimensionRatio="94:100"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent">
 
@@ -149,13 +150,15 @@
                         <TextView
                             android:id="@+id/textDescrizione"
                             style="@style/StyleAccent"
-                            android:layout_width="wrap_content"
+                            android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_marginStart="16dp"
                             android:layout_marginTop="16dp"
+                            android:layout_marginEnd="16dp"
                             android:text="@string/descrizione_label"
                             android:textAlignment="viewStart"
                             android:textSize="18sp"
+                            app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toBottomOf="@+id/textColorePrefix" />
 
@@ -203,19 +206,28 @@
             android:id="@+id/constraintLayoutAcquista"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="#13EDEDED"
+            android:background="@color/colorBackground"
             android:orientation="vertical"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             tools:context=".dress.DressFragment">
 
+            <View
+                android:id="@+id/divider"
+                android:layout_width="match_parent"
+                android:layout_height="0.5dp"
+                android:background="@color/colorPrimaryDark"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
             <Spinner
                 android:id="@+id/spinnerQuantita"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="50dp"
-                android:spinnerMode="dialog"
+                android:spinnerMode="dropdown"
                 app:layout_constraintBottom_toBottomOf="@+id/textView5"
                 app:layout_constraintStart_toEndOf="@+id/textView5"
                 app:layout_constraintTop_toTopOf="@+id/textView5" />
@@ -224,7 +236,7 @@
                 android:id="@+id/tagliaSpinner"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="63dp"
+                android:layout_marginStart="66dp"
                 app:layout_constraintBottom_toBottomOf="@+id/textView4"
                 app:layout_constraintStart_toEndOf="@+id/textView4"
                 app:layout_constraintTop_toTopOf="@+id/textView4" />

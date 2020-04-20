@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<menu xmlns:app="http://schemas.android.com/apk/res-auto"
+<menu
     xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
-        android:id="@+id/donnaItem"
-        android:title="@string/donna" />
-    <item
         android:id="@+id/uomoItem"
         android:title="@string/uomo" />
+    <item
+        android:id="@+id/donnaItem"
+        android:title="@string/donna" />
     <item
         android:id="@+id/bambinoItem"
         android:title="@string/bambino" />

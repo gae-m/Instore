@@ -14,6 +14,7 @@ import androidx.databinding.DataBindingUtil
 import com.bumptech.glide.Glide
 import com.example.instore.R
 import com.example.instore.databinding.FragmentDressBinding
+import com.example.instore.home.MyOnPageChangeListner
 import kotlinx.android.synthetic.main.fragment_dress.*
 import models.Database
 import models.Product
@@ -66,6 +67,7 @@ class DressFragment : Fragment() {
             for (i in 0..kotlin.math.min(product.img.size,imageViewArray.size) -1){
                 Glide.with(requireContext()).load(product.img[i]).into(imageViewArray[i])
             }
+            binding.viewPagerProdotto.addOnPageChangeListener(MyOnPageChangeListner(binding.swipeLeftImageView,binding.swipeRightImageView,Database.offerteImg.lastIndex))
 
 
 
