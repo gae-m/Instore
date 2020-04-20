@@ -17,7 +17,7 @@ object Database {
             field = value
         }
     var productsArray = mutableListOf<Product>()
-    var cart = mutableListOf<MutableMap<String, Any?>>()
+    var cart = mutableListOf<OneProduct>()
 
 
     fun venduto(id: String, quant_disp: Int, quant_vend: Int,taglia: String) {

@@ -17,6 +17,7 @@ import com.example.instore.databinding.FragmentDressBinding
 import com.example.instore.home.MyOnPageChangeListner
 import kotlinx.android.synthetic.main.fragment_dress.*
 import models.Database
+import models.OneProduct
 import models.Product
 import java.lang.Integer.min
 import kotlin.text.Typography.euro
@@ -27,8 +28,6 @@ class DressFragment : Fragment() {
     private lateinit var binding: FragmentDressBinding
     private lateinit var product: Product
     private var quantita_selz: Int = 1
-    private var isFind: Boolean = false
-    private var isAble: Boolean = false
     private var quant_disp: Int = 0
     private lateinit var taglia: String
     private var tagliaArray = arrayListOf<String>()
@@ -60,7 +59,7 @@ class DressFragment : Fragment() {
                 textNomeProdotto.text = product.nome
                 textPrezzo.text = product.prezzo.toString()+" "+euro
                 textNome.text = product.nome
-                textCodice.text = product.id
+                textCodice.text = product.cod
                 viewPagerProdotto.adapter = ProdottoPagerAdapter(requireContext(),product.img)
                 imageViewArray = arrayOf(imageViewProdotto1,imageViewProdotto2,imageViewProdotto3)
             }
@@ -109,6 +108,10 @@ class DressFragment : Fragment() {
 
         binding.buttonAggiungi.setOnClickListener {
 
+            var isFind: Boolean = false
+            var isAble: Boolean = false
+            var isAbleToAdd: Boolean = false
+
             Database.productsArray.forEach {
                 if(it.id == product.id) {
                     quant_disp = it.quantita_disp.get(taglia) as Int
@@ -121,16 +124,17 @@ class DressFragment : Fragment() {
             if (isAble) {
                 if (Database.cart.isEmpty()) {
                     product.let {
-                        val map = mutableMapOf<String, Any?>(
-                            "id" to product.id,
-                            "taglia" to taglia,
-                            "quantita_selz" to quantita_selz,
-                            "quantita_disp" to (product.quantita_disp.get(taglia)),
-                            "imgUrl" to product.img.get(0),
-                            "nome" to product.nome,
-                            "prezzo" to product.prezzo
-                        )
-                        Database.cart.add(map)
+                        val tmpCart = OneProduct()
+                        tmpCart.id = product.id
+                        tmpCart.taglia = taglia
+                        tmpCart.quantita_selz = quantita_selz
+                        tmpCart.quantita_disp = (product.quantita_disp.get(taglia)!!)
+                        tmpCart.imgUrl = product.img.get(0)
+                        tmpCart.nome = product.nome
+                        tmpCart.prezzo = product.prezzo
+                        tmpCart.cod = product.cod
+
+                        Database.cart.add(tmpCart)
                         Toast.makeText(
                             requireContext(),
                             "Prodotto aggiunto al carrello",
@@ -140,39 +144,57 @@ class DressFragment : Fragment() {
                 } else {
                     Database.cart.forEach { e ->
 
-                        if (e["id"] == product.id && e["taglia"] == taglia) {
+                        if (e.id == product.id && e.taglia == taglia) {
                             isFind = true
+                            Database.productsArray.forEach {
+                                if (it.id == product.id) {
+                                    quant_disp = it.quantita_disp.get(taglia) as Int
+                                    if (quantita_selz + e.quantita_selz <= it.quantita_disp.get(taglia) as Int) {
+                                        isAbleToAdd = true
+                                    }
+                                }
+                            }
+                            if (isAbleToAdd) {
+                                e.quantita_selz += quantita_selz
+                                Toast.makeText(
+                                    requireContext(),
+                                    "Prodotto gia presente nel carrello. Aggiunte altre: $quantita_selz",
+                                    Toast.LENGTH_SHORT
+                                ).show()
+                            } else {
+                                val builder = AlertDialog.Builder(requireContext())
+                                builder.setTitle("InStore")
+                                builder.setMessage("Quantità selezionata non disponibile. Controlla le quantità gia presenti nel carrello.\n Disponibilità totale:   $quant_disp")
+                                builder.setPositiveButton("OK") { _, _ ->
+                                }
+                                builder.show()
+                            }
+
+                        }
+
+                        if (isFind != true) {
+                            product.let {
+                                val tmpCart = OneProduct()
+                                tmpCart.id = product.id
+                                tmpCart.taglia = taglia
+                                tmpCart.quantita_selz = quantita_selz
+                                tmpCart.quantita_disp = (product.quantita_disp.get(taglia)!!)
+                                tmpCart.imgUrl = product.img.get(0)
+                                tmpCart.nome = product.nome
+                                tmpCart.prezzo = product.prezzo
+                                tmpCart.cod = product.cod
+
+                                Database.cart.add(tmpCart)
+                            }
                             Toast.makeText(
                                 requireContext(),
-                                "Prodotto gia presente nel carrello",
+                                "Prodotto aggiunto al carrello",
                                 Toast.LENGTH_SHORT
                             ).show()
                         }
-
                     }
 
-                    if (isFind != true) {
-                        product.let {
-                            val map = mutableMapOf<String, Any?>(
-                                "id" to product.id,
-                                "taglia" to taglia,
-                                "quantita_selz" to quantita_selz,
-                                "quantita_disp" to (product.quantita_disp.get(taglia)),
-                                "imgUrl" to product.img.get(0),
-                                "nome" to product.nome,
-                                "prezzo" to product.prezzo
-                            )
-
-                            Database.cart.add(map)
-                        }
-                        Toast.makeText(
-                            requireContext(),
-                            "Prodotto aggiunto al carrello",
-                            Toast.LENGTH_SHORT
-                        ).show()
-                    }
                 }
-
             }else {
                 val builder = AlertDialog.Builder(requireContext())
                 builder.setTitle("InStore")

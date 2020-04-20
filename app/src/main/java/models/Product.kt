@@ -24,5 +24,7 @@ class Product : Parcelable {
     var nuovi_arrivi: Boolean = false
     @IgnoredOnParcel
     var descrizione: String = ""
+    @IgnoredOnParcel
+    var cod: String = ""
 
 }

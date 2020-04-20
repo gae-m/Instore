@@ -49,12 +49,12 @@ class CartFragment : Fragment() {
 
             Database.cart.forEach { cart ->
                 Database.productsArray.forEach {
-                    if (cart["id"] == it.id) {
+                    if (cart.id == it.id) {
                         Database.venduto(
                             it.id,
-                            it.quantita_disp.get(cart.get("taglia")) as Int,
-                            cart.get("quantita_selz") as Int,
-                            cart["taglia"].toString()
+                            it.quantita_disp.get(cart.taglia) as Int,
+                            cart.quantita_selz,
+                            cart.taglia
                         )
                     }
                 }
@@ -87,7 +87,7 @@ class CartFragment : Fragment() {
                 textCarrelloVuoto.visibility = View.INVISIBLE
                 var somma: Double = 0.0
                 Database.cart.forEach {
-                    somma = somma + (it["prezzo"] as Double)
+                    somma = somma + (it.prezzo as Double)
                 }
                 val text = DecimalFormat("#,##.00").format(somma) + euro
                 textTotaleVar.text = text
