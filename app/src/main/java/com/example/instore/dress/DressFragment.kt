@@ -76,7 +76,11 @@ class DressFragment : Fragment() {
                         tagliaArray.add(it)
                     }
                 }
-
+            var arrayNum = arrayOf(1,2,3,4,5)
+            if (tagliaArray.isEmpty()) {
+                binding.buttonAggiungi.visibility = View.GONE
+                arrayNum = arrayOf(0)
+            }
                 //TAGLIA SPINNER
                 val tagliaAdapter = ArrayAdapter(requireContext(), android.R.layout.simple_spinner_item, tagliaArray)
                 binding.tagliaSpinner.adapter = tagliaAdapter
@@ -92,7 +96,7 @@ class DressFragment : Fragment() {
                 }
 
                 //QUANTITA SPINNER
-                val quantAdapter = ArrayAdapter(requireContext(), android.R.layout.simple_spinner_item, arrayOf(1,2,3,4,5))
+                val quantAdapter = ArrayAdapter(requireContext(), android.R.layout.simple_spinner_item, arrayNum)
                 binding.spinnerQuantita.adapter = quantAdapter
 
                 binding.spinnerQuantita.onItemSelectedListener = object: AdapterView.OnItemSelectedListener{
