@@ -38,7 +38,7 @@ class ClothesAdapter(val productList: MutableList<Product>, val context: Context
 
             val x = Bundle()
             x.putParcelable("prodotto", prodotto)
-            Navigation.findNavController(it).navigate(R.id.action_clothesFragment_to_dressFragment, x)
+            Navigation.findNavController(it).navigate(ClothesFragmentDirections.actionClothesFragmentToDressFragment(prodotto))
         }
 
     }

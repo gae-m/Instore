@@ -3,11 +3,16 @@
     xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
+        android:id="@+id/scanItem"
+        android:icon="@drawable/scan_icon"
+        android:title="@string/qr_scan"
+        app:showAsAction="ifRoom" />
+    <item
         android:id="@+id/searchItem"
         android:icon="@drawable/ic_search"
         android:title="@string/search"
         app:actionViewClass="androidx.appcompat.widget.SearchView"
-        app:showAsAction="ifRoom|collapseActionView" />
+        app:showAsAction="always|collapseActionView" />
     <item
         android:id="@+id/cartItem"
         android:enabled="true"

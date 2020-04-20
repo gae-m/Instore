@@ -72,6 +72,13 @@ class ClothesFragment : Fragment() {
                             it.cod.contains(query,true) ||
                             it.categoria.contains(query,true) ||
                             it.colore.contains(query,true)) tmpProductArray.add(it)
+                        if(tmpProductArray.size <= 0){
+                            binding.apply {
+                                buttonSpanCount1.visibility = View.GONE
+                                buttonSpanCount2.visibility = View.GONE
+                                textNoResult.visibility = View.VISIBLE
+                            }
+                        }
                     }
                 }
             }

@@ -52,7 +52,8 @@ class DressFragment : Fragment() {
 
         arguments?.let {
             var imageViewArray : Array<ImageView>
-            product = it.getParcelable("prodotto")!!
+            product = DressFragmentArgs.fromBundle(it).prodotto
+//            product = it.getParcelable("prodotto")!!
             binding.apply {
                 textDescrizione.text = product.descrizione
                 textColoreProdotto.text = product.colore

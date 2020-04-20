@@ -1,25 +1,22 @@
 package com.example.instore
 
-import android.content.Context
-import android.opengl.Visibility
+import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.SearchView
 import models.Database
 import androidx.databinding.DataBindingUtil
 import androidx.drawerlayout.widget.DrawerLayout
-import androidx.fragment.app.Fragment
-import androidx.fragment.app.findFragment
 import androidx.navigation.*
-import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.*
 import com.example.instore.databinding.ActivityMainBinding
-import com.example.instore.home.HomeFragment
-import kotlinx.android.synthetic.main.activity_main.*
+import com.google.zxing.BarcodeFormat
+import com.google.zxing.integration.android.IntentIntegrator
+
 
 
 class MainActivity : AppCompatActivity() {
@@ -27,6 +24,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var drawerLayout: DrawerLayout
     private lateinit var appBarConfiguration: AppBarConfiguration
     private lateinit var navController: NavController
+    private lateinit var qrScanIntegrator: IntentIntegrator
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -42,12 +40,20 @@ class MainActivity : AppCompatActivity() {
         NavigationUI.setupWithNavController(binding.navView,navController)
         NavigationUI.setupActionBarWithNavController(this,navController,appBarConfiguration)
         binding.navView.setNavigationItemSelectedListener {
-            goToClothes(it.title as String)
-        }
-        binding.navView.getHeaderView(0).setOnClickListener {
-            navController.popBackStack(R.id.homeFragment,false)
             drawerLayout.closeDrawer(binding.navView)
+            when (it.itemId) {
+                R.id.homeItem -> navController.popBackStack(R.id.homeFragment, false)
+                else -> goToClothes(it.title as String)
+            }
         }
+
+//        binding.navView.getHeaderView(0).setOnClickListener {
+//            navController.popBackStack(R.id.homeFragment,false)
+//            drawerLayout.closeDrawer(binding.navView)
+//        }
+        qrScanIntegrator = IntentIntegrator(this)
+        qrScanIntegrator.setBeepEnabled(false)
+        qrScanIntegrator.setPrompt("Inquadra il QRCode dell'articolo")
 
     }
 
@@ -74,19 +80,23 @@ class MainActivity : AppCompatActivity() {
                     setVisible(false)
                     setEnabled(false)
                 }
+                menu?.findItem(R.id.scanItem)?.apply {
+                    setVisible(false)
+                    setEnabled(false)
+                }
             }
         }
         return super.onCreateOptionsMenu(menu)
     }
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when(item.itemId){
+            R.id.scanItem -> scan()
             R.id.cartItem -> navController.navigate(R.id.cartFragment)
         }
         return super.onOptionsItemSelected(item)
     }
 
     fun goToClothes(categoria: String): Boolean{
-        drawerLayout.closeDrawer(binding.navView)
         val bundle = Bundle()
         bundle.putString("categoria",categoria)
         navController.navigate(R.id.clothesFragment,bundle, NavOptions.Builder().setPopUpTo(R.id.homeFragment,false).build())
@@ -102,6 +112,25 @@ class MainActivity : AppCompatActivity() {
     override fun onBackPressed() {
         drawerLayout.closeDrawer(binding.navView)
         super.onBackPressed()
+    }
+
+    private fun scan() {
+        qrScanIntegrator.initiateScan()
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        val result = IntentIntegrator.parseActivityResult(requestCode, resultCode, data)
+        if (result != null) {
+            // If QRCode has no data.
+            if(result.contents != null){
+                // If QRCode contains data.
+                val bundle = Bundle()
+                bundle.putString("categoria", "Risultati")
+                bundle.putString("query", result.contents)
+                navController.navigate(R.id.clothesFragment, bundle)
+            }
+        }
     }
 
 }
