@@ -34,4 +34,5 @@
     <string name="acquista">Acquista</string>
     <string name="tot">Totale:</string>
     <string name="carrello_vuoto">Il tuo carrello è vuoto.</string>
+    <string name="logo">Logo</string>
 </resources>
