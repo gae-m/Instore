@@ -12,7 +12,10 @@ import androidx.appcompat.widget.SearchView
 import models.Database
 import androidx.databinding.DataBindingUtil
 import androidx.drawerlayout.widget.DrawerLayout
+import androidx.fragment.app.Fragment
+import androidx.fragment.app.findFragment
 import androidx.navigation.*
+import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.*
 import com.example.instore.databinding.ActivityMainBinding
 import com.example.instore.home.HomeFragment
@@ -24,6 +27,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var drawerLayout: DrawerLayout
     private lateinit var appBarConfiguration: AppBarConfiguration
     private lateinit var navController: NavController
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -39,6 +43,10 @@ class MainActivity : AppCompatActivity() {
         NavigationUI.setupActionBarWithNavController(this,navController,appBarConfiguration)
         binding.navView.setNavigationItemSelectedListener {
             goToClothes(it.title as String)
+        }
+        binding.navView.getHeaderView(0).setOnClickListener {
+            navController.popBackStack(R.id.homeFragment,false)
+            drawerLayout.closeDrawer(binding.navView)
         }
 
     }

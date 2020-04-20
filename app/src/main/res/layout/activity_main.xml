@@ -37,6 +37,7 @@
             android:layout_gravity="start"
             android:background="@color/colorBackground"
             android:fitsSystemWindows="false"
+            app:headerLayout="@layout/navdrawer_header"
             app:itemTextColor="@color/colorPrimaryDark"
             app:menu="@menu/navdrawer_menu" />
     </androidx.drawerlayout.widget.DrawerLayout>
