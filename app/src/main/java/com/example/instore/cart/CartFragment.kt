@@ -85,7 +85,7 @@ class CartFragment : Fragment() {
                 textCarrelloVuoto.visibility = View.VISIBLE
             } else {
                 textCarrelloVuoto.visibility = View.INVISIBLE
-                var somma: Double = 0.0
+                var somma = 0.0
                 Database.cart.forEach {
                     somma = somma + it.prezzo*it.quantita_selz
                 }

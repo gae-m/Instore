@@ -14,7 +14,6 @@ import androidx.drawerlayout.widget.DrawerLayout
 import androidx.navigation.*
 import androidx.navigation.ui.*
 import com.example.instore.databinding.ActivityMainBinding
-import com.google.zxing.BarcodeFormat
 import com.google.zxing.integration.android.IntentIntegrator
 
 
@@ -47,10 +46,6 @@ class MainActivity : AppCompatActivity() {
             }
         }
 
-//        binding.navView.getHeaderView(0).setOnClickListener {
-//            navController.popBackStack(R.id.homeFragment,false)
-//            drawerLayout.closeDrawer(binding.navView)
-//        }
         qrScanIntegrator = IntentIntegrator(this)
         qrScanIntegrator.setBeepEnabled(false)
         qrScanIntegrator.setPrompt("Inquadra il QRCode dell'articolo")
