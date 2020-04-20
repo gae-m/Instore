@@ -147,29 +147,29 @@ class DressFragment : Fragment() {
                         if (e.id == product.id && e.taglia == taglia) {
                             isFind = true
                             Database.productsArray.forEach {
-                                if (it.id == product.id) {
+                                if (e.id == it.id) {
                                     quant_disp = it.quantita_disp.get(taglia) as Int
-                                    if (quantita_selz + e.quantita_selz <= it.quantita_disp.get(taglia) as Int) {
-                                        isAbleToAdd = true
-                                    }
                                 }
                             }
-                            if (isAbleToAdd) {
+
+                            if (quantita_selz + e.quantita_selz <= quant_disp) {
                                 e.quantita_selz += quantita_selz
                                 Toast.makeText(
                                     requireContext(),
-                                    "Prodotto gia presente nel carrello. Aggiunte altre: $quantita_selz",
+                                    "Prodotto già presente nel carrello. Quantità aggiunta: $quantita_selz",
                                     Toast.LENGTH_SHORT
                                 ).show()
                             } else {
                                 val builder = AlertDialog.Builder(requireContext())
                                 builder.setTitle("InStore")
-                                builder.setMessage("Quantità selezionata non disponibile. Controlla le quantità gia presenti nel carrello.\n Disponibilità totale:   $quant_disp")
+                                builder.setMessage("Quantità aggiunta non disponibile.\nControlla il tuo carrello.\nDisponibilità totale:   $quant_disp")
                                 builder.setPositiveButton("OK") { _, _ ->
                                 }
                                 builder.show()
-                            }
+                            }                            }
+                        }
 
+                        if (isAbleToAdd) {
                         }
 
                         if (isFind != true) {
@@ -192,10 +192,10 @@ class DressFragment : Fragment() {
                                 Toast.LENGTH_SHORT
                             ).show()
                         }
-                    }
 
                 }
             }else {
+
                 val builder = AlertDialog.Builder(requireContext())
                 builder.setTitle("InStore")
                 builder.setMessage("Quantità selezionata non disponibile.\n Disponibilità :   $quant_disp")

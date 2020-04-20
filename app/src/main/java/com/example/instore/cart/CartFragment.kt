@@ -87,7 +87,7 @@ class CartFragment : Fragment() {
                 textCarrelloVuoto.visibility = View.INVISIBLE
                 var somma: Double = 0.0
                 Database.cart.forEach {
-                    somma = somma + (it.prezzo as Double)
+                    somma = somma + (it.prezzo)
                 }
                 val text = DecimalFormat("#,##.00").format(somma) + euro
                 textTotaleVar.text = text
