@@ -2,21 +2,14 @@ package com.example.instore.cart
 
 import android.annotation.SuppressLint
 import android.content.Context
-import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.*
-import androidx.navigation.Navigation
-import androidx.navigation.Navigator
-import androidx.navigation.NavigatorProvider
 import androidx.navigation.fragment.findNavController
-import androidx.navigation.ui.NavigationUI
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.instore.R
-import com.example.instore.clothes.ClothesFragmentDirections
-import kotlinx.android.synthetic.main.riga_cart.view.*
 import models.Database
 import models.OneProduct
 import models.Product

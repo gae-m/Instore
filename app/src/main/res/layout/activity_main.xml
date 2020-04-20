@@ -28,7 +28,8 @@
             android:focusable="true"
             android:focusableInTouchMode="true"
             android:orientation="vertical"
-            android:visibility="gone"></LinearLayout>
+            android:visibility="gone">
+        </LinearLayout>
 
         <com.google.android.material.navigation.NavigationView
             android:id="@+id/navView"

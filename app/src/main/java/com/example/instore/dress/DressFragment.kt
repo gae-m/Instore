@@ -1,5 +1,6 @@
 package com.example.instore.dress
 
+import android.annotation.SuppressLint
 import android.app.AlertDialog
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -45,18 +46,18 @@ class DressFragment : Fragment() {
         super.onStop()
     }
 
+    @SuppressLint("SetTextI18n")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
         arguments?.let {
             var imageViewArray : Array<ImageView>
             product = DressFragmentArgs.fromBundle(it).prodotto
-//            product = it.getParcelable("prodotto")!!
             binding.apply {
                 textDescrizione.text = product.descrizione
                 textColoreProdotto.text = product.colore
                 textNomeProdotto.text = product.nome
-                textPrezzo.text = product.prezzo.toString()+" "+euro
+                textPrezzo.text = product.prezzo.toString()+ " "+ euro
                 textNome.text = product.nome
                 textCodice.text = product.cod
                 viewPagerProdotto.adapter = ProdottoPagerAdapter(requireContext(),product.img)

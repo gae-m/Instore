@@ -9,7 +9,6 @@ import com.example.instore.R
 import androidx.databinding.DataBindingUtil
 import androidx.navigation.NavController
 import androidx.navigation.fragment.findNavController
-import androidx.viewpager.widget.ViewPager
 import com.example.instore.databinding.FragmentHomeBinding
 import models.Database
 

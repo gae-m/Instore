@@ -37,4 +37,5 @@
     <string name="logo">Logo</string>
     <string name="qr_scan">Scan</string>
     <string name="no_result">Nessun risultato trovato.</string>
+    <string name="delete">Delete</string>
 </resources>

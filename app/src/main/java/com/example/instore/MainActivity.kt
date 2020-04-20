@@ -5,7 +5,6 @@ import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.SearchView
 import models.Database
@@ -117,9 +116,7 @@ class MainActivity : AppCompatActivity() {
         super.onActivityResult(requestCode, resultCode, data)
         val result = IntentIntegrator.parseActivityResult(requestCode, resultCode, data)
         if (result != null) {
-            // If QRCode has no data.
             if(result.contents != null){
-                // If QRCode contains data.
                 val bundle = Bundle()
                 bundle.putString("categoria", "Risultati")
                 bundle.putString("query", result.contents)
