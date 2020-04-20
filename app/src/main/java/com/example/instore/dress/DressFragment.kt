@@ -15,11 +15,9 @@ import com.bumptech.glide.Glide
 import com.example.instore.R
 import com.example.instore.databinding.FragmentDressBinding
 import com.example.instore.home.MyOnPageChangeListner
-import kotlinx.android.synthetic.main.fragment_dress.*
 import models.Database
 import models.OneProduct
 import models.Product
-import java.lang.Integer.min
 import kotlin.text.Typography.euro
 
 
@@ -108,9 +106,8 @@ class DressFragment : Fragment() {
 
         binding.buttonAggiungi.setOnClickListener {
 
-            var isFind: Boolean = false
-            var isAble: Boolean = false
-            var isAbleToAdd: Boolean = false
+            var isFind = false
+            var isAble = false
 
             Database.productsArray.forEach {
                 if(it.id == product.id) {
@@ -167,9 +164,6 @@ class DressFragment : Fragment() {
                                 }
                                 builder.show()
                             }                            }
-                        }
-
-                        if (isAbleToAdd) {
                         }
 
                         if (isFind != true) {

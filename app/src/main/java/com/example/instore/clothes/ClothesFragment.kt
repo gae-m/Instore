@@ -5,12 +5,10 @@ import android.view.*
 import androidx.fragment.app.Fragment
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
-import androidx.navigation.fragment.findNavController
 import com.example.instore.R
 import com.example.instore.databinding.FragmentClothesBinding
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
-import kotlinx.android.synthetic.main.fragment_clothes.*
 import models.Database
 import models.Product
 
@@ -57,7 +55,7 @@ class ClothesFragment : Fragment() {
             getFragmentManager()?.beginTransaction()?.detach(this)?.attach(this)?.commit()
         }
 
-        var tmpProductArray = mutableListOf<Product>()
+        val tmpProductArray = mutableListOf<Product>()
         gridLayoutManager = GridLayoutManager(requireContext(), spanCount, LinearLayoutManager.VERTICAL, false)
         binding.listaProdotti.layoutManager = gridLayoutManager
 

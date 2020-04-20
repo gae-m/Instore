@@ -15,8 +15,6 @@ import kotlin.text.Typography.euro
 
 class CartAdpter(val cartList: MutableList<OneProduct>, val context: Context, val cartFragment: CartFragment) : RecyclerView.Adapter<ItemHolder>() {
 
-    private var index: Int = 0
-
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ItemHolder {
         val itemHolder = LayoutInflater.from(parent.context).inflate(R.layout.riga_cart, parent, false)
         return ItemHolder(itemHolder)
@@ -28,7 +26,7 @@ class CartAdpter(val cartList: MutableList<OneProduct>, val context: Context, va
 
     @SuppressLint("SetTextI18n")
     override fun onBindViewHolder(holder: ItemHolder, position: Int) {
-        var prodottoCart = cartList[position]
+        val prodottoCart = cartList[position]
 
         Glide.with(context).load(prodottoCart.imgUrl).into(holder.tvImage)
         holder.tvNome.text = prodottoCart.nome

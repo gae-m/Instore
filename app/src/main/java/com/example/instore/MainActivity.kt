@@ -1,9 +1,7 @@
 package com.example.instore
 
-import android.content.Context
-import android.opengl.Visibility
+
 import android.os.Bundle
-import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
@@ -15,8 +13,7 @@ import androidx.drawerlayout.widget.DrawerLayout
 import androidx.navigation.*
 import androidx.navigation.ui.*
 import com.example.instore.databinding.ActivityMainBinding
-import com.example.instore.home.HomeFragment
-import kotlinx.android.synthetic.main.activity_main.*
+
 
 
 class MainActivity : AppCompatActivity() {

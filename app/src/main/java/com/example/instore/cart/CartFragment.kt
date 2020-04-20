@@ -6,15 +6,11 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
 import androidx.databinding.DataBindingUtil
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.instore.R
 import com.example.instore.databinding.FragmentCartBinding
-import com.google.android.gms.common.util.DataUtils
-import io.opencensus.internal.StringUtils
-import kotlinx.android.synthetic.main.fragment_cart.*
 import models.Database
 import java.text.DecimalFormat
 import kotlin.text.Typography.euro
@@ -85,7 +81,7 @@ class CartFragment : Fragment() {
                 textCarrelloVuoto.visibility = View.VISIBLE
             } else {
                 textCarrelloVuoto.visibility = View.INVISIBLE
-                var somma: Double = 0.0
+                var somma = 0.0
                 Database.cart.forEach {
                     somma = somma + (it.prezzo)
                 }
